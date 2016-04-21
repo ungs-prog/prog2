@@ -1,3 +1,3 @@
 # Enlaces
 
-<https://ungs-prog.github.io/prog2/>
+[ungs-prog.github.io/prog2](https://ungs-prog.github.io/prog2/)
