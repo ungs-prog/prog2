@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-21 Thu 15:07 -->
+<!-- 2016-04-21 Thu 15:42 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Recursividad: práctica 1</title>
@@ -180,6 +180,20 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline5">Recursividad con arreglo por índice</a>
 <ul>
 <li><a href="#orgheadline6">Función <i>sumarRec1()</i></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline7">Función <i>mínimo</i> recursiva</a>
+<ul>
+<li><a href="#orgheadline8">Recursividad por índice</a>
+<ul>
+<li><a href="#orgheadline9">Función <i>minimoRec1()</i></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline10">Recursividad con acumulador parcial</a>
+<ul>
+<li><a href="#orgheadline11">Función <i>minimoRec2()</i></a></li>
 </ul>
 </li>
 </ul>
@@ -564,6 +578,180 @@ sumarAux1([7, 3, 9, 5], 0)
 7 + 17
 24
 </pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Función <i>mínimo</i> recursiva</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<p>
+<b>Archivo de código:</b> <a href="MinimoRec.java">MinimoRec.java</a>.
+</p>
+
+<p>
+Se desea implementar una función recursiva que encuentre el mínimo de un
+arreglo. Si el arreglo está vacío, debe devolver -1.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimo</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]);
+</pre>
+</div>
+
+<p>
+La versión iterativa se puede escribir usando el operador comparacion <code>&lt;</code> o
+usando la función de Java <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html#min(int,%20int)">Math.min()</a>, que devuelve el menor de dos números.
+</p>
+
+<p>
+Es importante darse cuenta que ambas son equivalentes. Por brevedad, en general
+en las versiones recursivas se usará exclusivamente Math.min().
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Versi&#243;n iterativa con comparaci&#243;n directa.</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoIter1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;
+    }
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimo</span> = arr[0];
+
+    <span style="color: #859900;">for</span> (<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=1; i &lt; arr.<span style="color: #b58900;">length</span>; i++)
+        <span style="color: #859900;">if</span> (arr[i] &lt; minimo)
+            minimo = arr[i];
+
+    <span style="color: #859900;">return</span> minimo;
+}
+</pre>
+</div>
+
+<p>
+En la segunda versión, el <code class="src src-java"><span style="color: #859900;">if</span>
+</code> se sustituye por una
+llamada a Math.min():
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Versi&#243;n iterativa con Math.min().</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoIter2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;
+    }
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoParcial</span> = arr[0];
+
+    <span style="color: #859900;">for</span> (<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=1; i &lt; arr.<span style="color: #b58900;">length</span>; i++)
+        minimoParcial = Math.min(arr[1], minimoParcial);
+
+    <span style="color: #859900;">return</span> minimoParcial;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Resultado final.</span>
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Recursividad por índice</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+[Pendiente de explicar.]
+</p>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">Función <i>minimoRec1()</i></h4>
+<div class="outline-text-4" id="text-orgheadline9">
+<p>
+Siguiendo el mismo patrón que en sumarRec1:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Manejar primero el caso de un arreglo vac&#237;o.</span>
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;
+    }
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Llamada a la funci&#243;n auxiliar recursiva.</span>
+    <span style="color: #859900;">return</span> minimoAux1(arr, 0);
+}
+
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso base: pos es el &#250;ltimo &#237;ndice del arreglo.</span>
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+      <span style="color: #859900;">return</span> arr[pos];
+    }
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso recursivo: incrementar &#237;ndice en 1.</span>
+    <span style="color: #859900;">return</span> Math.min(arr[pos], minimoAux1(arr, pos + 1));
+}
+</pre>
+</div>
+
+<p>
+<b>Ejercicio 2:</b> implementar una versión de <i>minimoAux1</i> que use un <code>if</code> en lugar de
+una llamada a Math.min().
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">Recursividad con acumulador parcial</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<p>
+[Pendiente de explicar.]
+</p>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">Función <i>minimoRec2()</i></h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoParcial</span>) {
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+      <span style="color: #859900;">return</span> Math.min(arr[pos], minimoParcial);
+    }
+    <span style="color: #859900;">return</span> minimoAux2(arr, pos + 1,
+                      Math.min(arr[pos], nuevoParcial));
+}
+</pre>
+</div>
+
+<p>
+Extrayendo a una variable local:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoParcial</span>)
+{
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nuevoParcial</span> = Math.min(arr[pos], minimoParcial);
+
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+      <span style="color: #859900;">return</span> nuevoParcial;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Es el final.</span>
+    }
+    <span style="color: #859900;">return</span> minimoAux2(arr, pos + 1, nuevoParcial);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;
+    }
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">El primer "minimoParcial" es el primer elemento.</span>
+    <span style="color: #859900;">return</span> minimoAux2(arr, 1, arr[0]);
+}
+</pre>
+</div>
 </div>
 </div>
 </div>

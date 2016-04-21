@@ -1,3 +1,5 @@
+package ungs.prog2.rec1;
+
 class SumarRec {
 
     // Versión iterativa de sumar().
