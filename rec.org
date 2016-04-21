@@ -1,0 +1,321 @@
+#+LANGUAGE:es
+#+HTML_DOCTYPE: html5
+#+OPTIONS: html-postamble:nil
+#+OPTIONS: ^:nil toc:nil H:3 num:0
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/prog2/org.css">
+#+HTML_MATHJAX: path: "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
+
+* Recursión: práctica 1
+:PROPERTIES:
+:EXPORT_FILE_NAME: html/rec1/index.html
+:END:
+
+#+TOC: headlines 3
+
+** Función /sumar/ recursiva
+
+*Archivo de código:* [[file:SumarRec.java][SumarRec.java]].
+
+Se desea implementar una función recursiva que sume todos los elementos de un
+arreglo de enteros:
+
+#+BEGIN_SRC java
+static int sumar(int arr[]);
+#+END_SRC
+
+Como referencia, esta sería la implementación iterativa, con complejidad
+$\mathcal{O}(n)$.
+# En realidad $\Theta(n)$.
+
+#+BEGIN_SRC java :noweb-ref sumarIter
+// Versión iterativa de sumar().
+static int sumarIter(int arr[]) {
+    int suma = 0;
+
+    for (int i=0; i < arr.length; i++)
+        suma = suma + arr[i];
+
+    return suma;
+}
+#+END_SRC
+
+*** Caso base y caso recursivo
+
+Para pensar la función recursiva, hay que determinar el /caso base/ y el /caso
+recursivo/.
+
+La pregunta para descubrir el caso base es:
+
+#+BEGIN_QUOTE
+*Caso base:* ¿cuál es el /tamaño mínimo/ del problema (esto es, el tamaño mínimo
+del arreglo) para el cual se puede dar una solución /inmediata?/
+#+END_QUOTE
+
+Y la pregunta para descubrir el caso recursivo:
+
+#+BEGIN_QUOTE
+*Caso recursivo:* si la función /ya supiera/ sumar arreglos de longitud $N$ ¿qué
+debería hacer para sumar un arreglo de longitud $N+1$?
+#+END_QUOTE
+
+Las respuestas para el caso de la suma son:
+
+  - *Caso base:* se puede dar una solución inmediata si _el arreglo es de tamaño
+    1_, ya que: la suma de un arreglo con un solo elemento es, directamente, ese
+    elemento:
+
+    #+BEGIN_EXAMPLE
+    suma([7]) = 7
+    suma([3]) = 3
+    suma([0]) = 0
+    suma([-1]) = -1
+    #+END_EXAMPLE
+
+  - *Caso recursivo:* si sumar un arreglo de, por ejemplo, tres elementos ($N =
+    3$) ya es /un caso resuelto/, se puede dar una solución a un arreglo de $N +
+    1 = 4$ _agregando al primer elemento la suma de los tres restantes_:
+
+    #+BEGIN_EXAMPLE
+    suma([7, 3, 9, 5])  =  7 + suma([3, 9, 5])
+    #+END_EXAMPLE
+
+
+*** Recursividad con arreglo por copia
+
+El código del caso base de la suma es trivial:
+
+#+BEGIN_SRC java
+// Caso base solamente.
+static int sumarRec(int arr[]) {
+    if (arr.length == 1) {
+        return arr[0];
+    }
+}
+#+END_SRC
+
+Para el caso recursivo se debe implementar el “achicamiento” del problema. En
+otras palabras, implementar:
+
+#+BEGIN_EXAMPLE
+// Pseudo-código del caso recursivo
+if arreglo.length > 1:
+    return arreglo[0] + sumarRec("mismo arreglo sin el primer elemento");
+#+END_EXAMPLE
+
+Por ejemplo:
+
+#+BEGIN_EXAMPLE
+// Pseudo-código con un arreglo de ejemplo
+arreglo = [7, 3, 9, 5];
+if arreglo.length > 1:
+    return arreglo[0] + sumarRec([3, 9, 5]);
+#+END_EXAMPLE
+
+En Java, para pasar de =[7, 3, 9, 5]= a =[3, 9, 5]= es necesario realizar una copia
+del arreglo, pues no se pueden eliminar elementos.
+
+Se podría implementar la siguiente función auxiliar:
+
+<<borrarPrimero>>
+#+BEGIN_SRC java :noweb-ref borrarPrimero
+// Devuelve una copia del arreglo sin su primer elemento.
+static int[] borrarPrimero(int arreglo[]) {
+    return null;
+}
+#+END_SRC
+
+Con esta función, el pseudo-código quedaría tal que:
+
+#+BEGIN_EXAMPLE
+// Pseudo-código usando borrarPrimero().
+arreglo = [7, 3, 9, 5];
+if arreglo.length > 1:
+    return arreglo[0] + sumarRec(borrarPrimero(arreglo));
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+#+END_EXAMPLE
+
+**** Función /sumarRec()/
+
+La versión final de ~sumarRec()~ sería:
+
+#+BEGIN_SRC java :noweb-ref sumarRec
+static int sumarRec(int arr[]) {
+    if (arr.length == 1) {
+        return arr[0];
+    }
+    if (arr.length > 1) {
+      return arr[0] + sumarRec(borrarPrimero(arr));
+    }
+    return 0;  // En caso de que nos pasen un arreglo vacío.
+}
+#+END_SRC
+
+Una traza de su ejecución sería:
+
+#+BEGIN_EXAMPLE
+sumarRec([7, 3, 9, 5])
+7 + sumarRec([3, 9, 5])
+7 + 3 + sumarRec([9, 5])
+7 + 3 + 9 + sumarRec([5])
+7 + 3 + 9 + 5
+7 + 3 + 14
+7 + 17
+24
+#+END_EXAMPLE
+
+*Ejercicio 1*: implementar [[borrarPrimero][borrarPrimero()]].
+
+
+*** Recursividad con arreglo por índice
+
+La complejidad de copiar un arreglo es $\mathcal{O}(n)$ y no cambia aunque se
+descarte el primer elemento. El problema de realizar una copia en cada paso de
+la recursión es que la complejidad total de /sumarRec/ se dispara a
+$\mathcal{O}(n^2)$.
+
+Para mantener la complejidad de la solución recursiva en $\mathcal{O}(n)$ se
+debe evitar realizar copia alguna del arreglo.
+
+El patrón recursivo para solucionar este problema es sustituir la copia del
+arreglo por un parámetro /posición/ que indica cuál es la siguiente posición a
+sumar.
+
+Un ejemplo sería:
+
+#+BEGIN_EXAMPLE
+// Pseudo-código para la recursión por índice:
+
+sumarRec1([7, 3, 9, 5]) =
+
+  arr[0] + sumarRec1("mismo arreglo, pero a partir del índice 1")
+                                          ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 1") =
+
+  arr[1] + sumarRec1("mismo arreglo a partir del índice 2")
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 2") =
+
+  arr[2] + sumarRec1("mismo arreglo a partir del índice 3")
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 3") =
+
+  → 3 es el úlimo índice, no hay llamada recursiva
+    ^^^^^^^^^^^^^^^^^^^^
+
+  return arr[3];
+#+END_EXAMPLE
+
+Ahora, por tanto, la función recursiva toma dos parámetros:
+
+#+BEGIN_SRC java
+static int sumarRec1(int arr[], int pos);
+#+END_SRC
+
+  - *Caso base:* si /pos/ es el último índice válido, se devuelve directamente
+    ~arr[pos]~.
+
+  - *Caso recursivo:* si no, se achica el problema incrementando en 1 el índice.
+
+El código sería:
+
+#+BEGIN_SRC java
+static int sumarRec1(int arr[], int pos) {
+    // Caso base: pos es el último índice del arreglo.
+    if (pos == arr.length - 1) {
+        return arr[pos];
+    }
+    // Caso recursivo: incrementar índice en 1.
+    return arr[pos] + sumarRec1(arr, pos + 1);
+}
+#+END_SRC
+
+**** Función /sumarRec1()/
+
+La firma de la función original que se pidió es:
+
+#+BEGIN_SRC java
+static int sumar(int arr[]);
+#+END_SRC
+
+Sin embargo, la función /sumarRec1/ no cumple con esta firma, pues toma un
+parámetro adicional.
+
+La solución es mover el código recursivo a una función auxiliar privada:
+
+#+BEGIN_SRC java :noweb-ref sumarAux1
+private static int sumarAux1(int arr[], int pos) {
+    // Caso base: pos es el último índice del arreglo.
+    if (pos == arr.length - 1) {
+        return arr[pos];
+    }
+    // Caso recursivo: incrementar índice en 1.
+    return arr[pos] + sumarAux1(arr, pos + 1);
+}
+#+END_SRC
+
+Y dejar a /sumarRec1/ llamar a la función auxiliar, comenzando a sumar por el
+primer elemento (índice 0):
+
+#+BEGIN_SRC java :noweb-ref sumarRec1
+static int sumarRec1(int arr[]) {
+    // Manejar primero el caso de un arreglo vacío.
+    if (arr.length == 0) {
+        return 0;
+    }
+    // Llamada a la función auxiliar recursiva.
+    return sumarAux1(arr, 0);
+}
+#+END_SRC
+
+Una traza de su ejecución sería:
+
+#+BEGIN_EXAMPLE
+sumarRec1([7, 3, 9, 5])
+sumarAux1([7, 3, 9, 5], 0)
+                        ⬆
+7 + sumarAux1([7, 3, 9, 5], 1)
+                            ⬆
+7 + 3 + sumarAux1([7, 3, 9, 5], 2)
+                                ⬆
+7 + 3 + 9 sumarRec([7, 3, 9, 5], 3)
+                                 ⬆
+7 + 3 + 9 + 5
+7 + 3 + 14
+7 + 17
+24
+#+END_EXAMPLE
+
+
+*** Tangle                                                         :noexport:
+
+#+BEGIN_SRC java :tangle html/rec1/SumarRec.java :noweb yes
+class SumarRec {
+
+    <<sumarIter>>
+
+    // Versión recursiva con índice.
+    <<sumarRec1>>
+
+    <<sumarAux1>>
+
+    // TODO: Ejercicio 2: implementar sumarRec2().
+
+    // Versión recursiva con copia del arreglo.
+    //
+    // Cuidado: borrarPrimero() es O(n), por lo que
+    // la complejidad final de sumarRec() es O(n²)!
+    <<sumarRec>>
+
+    // TODO: Ejercicio 1: implementar borrarPrimero().
+    <<borrarPrimero>>
+}
+#+END_SRC
+
+
+** COMMENT Local variables
+# Local Variables:
+# org-src-preserve-indentation: t
+# End:
