@@ -31,8 +31,6 @@ class SumarRec {
         return arr[pos] + sumarAux1(arr, pos + 1);
     }
 
-    // TODO: Ejercicio 2: implementar sumarRec2().
-
     // Versión recursiva con copia del arreglo.
     //
     // Cuidado: borrarPrimero() es O(n), por lo que
