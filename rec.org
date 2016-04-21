@@ -5,9 +5,9 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/prog2/org.css">
 #+HTML_MATHJAX: path: "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
 
-* Recursión: práctica 1
+* Recursividad: práctica 1
 :PROPERTIES:
-:EXPORT_FILE_NAME: html/rec1/index.html
+:EXPORT_FILE_NAME: prog2/rec1/index.html
 :END:
 
 #+TOC: headlines 3
@@ -291,7 +291,7 @@ sumarAux1([7, 3, 9, 5], 0)
 
 *** Tangle                                                         :noexport:
 
-#+BEGIN_SRC java :tangle html/rec1/SumarRec.java :noweb yes
+#+BEGIN_SRC java :tangle prog2/rec1/SumarRec.java :noweb yes
 class SumarRec {
 
     <<sumarIter>>
