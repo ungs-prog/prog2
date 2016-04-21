@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-20 Wed 23:42 -->
+<!-- 2016-04-21 Thu 14:37 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Recursión: práctica 1</title>
@@ -174,26 +174,12 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">Caso base y caso recursivo</a></li>
 <li><a href="#orgheadline3">Recursividad con arreglo por copia</a>
 <ul>
-<li><a href="#orgheadline4"><i>sumarRec1</i></a></li>
+<li><a href="#orgheadline4">Función <i>sumarRec()</i></a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5"><span class="todo TODO">TODO</span> Recursividad con arreglo por índice</a>
+<li><a href="#orgheadline5">Recursividad con arreglo por índice</a>
 <ul>
-<li><a href="#orgheadline6"><i>sumarRec2</i></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline7">Función <i>mínimo</i> recursiva</a>
-<ul>
-<li><a href="#orgheadline8"><span class="todo TODO">TODO</span> Mínimo por posición</a>
-<ul>
-<li><a href="#orgheadline9"><i>minimoRec1</i></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline10"><span class="todo TODO">TODO</span> Mínimo con acumulador parcial</a>
-<ul>
-<li><a href="#orgheadline11"><i>minimoRec2</i></a></li>
+<li><a href="#orgheadline6">Función <i>sumarRec1()</i></a></li>
 </ul>
 </li>
 </ul>
@@ -201,14 +187,14 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-
-<p>
-<a href="FuncRec.java">FuncRec.java</a>
-</p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">Función <i>sumar</i> recursiva</h2>
 <div class="outline-text-2" id="text-orgheadline1">
+<p>
+<b>Archivo de código:</b> <a href="SumarRec.java">SumarRec.java</a>.
+</p>
+
 <p>
 Se desea implementar una función recursiva que sume todos los elementos de un
 arreglo de enteros:
@@ -221,7 +207,8 @@ arreglo de enteros:
 </div>
 
 <p>
-Como referencia, esta sería la implementación iterativa:
+Como referencia, esta sería la implementación iterativa, con complejidad
+\(\mathcal{O}(n)\).
 </p>
 
 <div class="org-src-container">
@@ -254,7 +241,7 @@ La pregunta para descubrir el caso base es:
 <blockquote>
 <p>
 <b>Caso base:</b> ¿cuál es el <i>tamaño mínimo</i> del problema (esto es, el tamaño mínimo
-del arreglo) para el que se puede dar una solución <i>inmediata?</i>
+del arreglo) para el cual se puede dar una solución <i>inmediata?</i>
 </p>
 </blockquote>
 
@@ -264,7 +251,7 @@ Y la pregunta para descubrir el caso recursivo:
 
 <blockquote>
 <p>
-<b>Caso recursivo:</b> ¿si la función <i>ya supiera</i> sumar arreglos de longitud \(N\), qué
+<b>Caso recursivo:</b> si la función <i>ya supiera</i> sumar arreglos de longitud \(N\) ¿qué
 debería hacer para sumar un arreglo de longitud \(N+1\)?
 </p>
 </blockquote>
@@ -277,7 +264,7 @@ Las respuestas para el caso de la suma son:
 <li><p>
 <b>Caso base:</b> se puede dar una solución inmediata si <span class="underline">el arreglo es de tamaño
 1</span>, ya que: la suma de un arreglo con un solo elemento es, directamente, ese
-elemento, <code>arr[0]</code>:
+elemento:
 </p>
 
 <pre class="example">
@@ -288,9 +275,9 @@ suma([-1]) = -1
 </pre></li>
 
 <li><p>
-<b>Caso recursivo:</b> si por ejemplo sumar un arreglo de tres elementos (\(N = 3\))
-es ya <i>un caso resuelto</i>, se puede dar una solución a un arreglo de \(N + 1 =
-    4\) elementos <span class="underline">sumando al primer elemento la suma de los tres restantes</span>:
+<b>Caso recursivo:</b> si sumar un arreglo de, por ejemplo, tres elementos (\(N =
+    3\)) ya es <i>un caso resuelto</i>, se puede dar una solución a un arreglo de \(N +
+    1 = 4\) <span class="underline">agregando al primer elemento la suma de los tres restantes</span>:
 </p>
 
 <pre class="example">
@@ -300,17 +287,18 @@ suma([7, 3, 9, 5])  =  7 + suma([3, 9, 5])
 </div>
 </div>
 
+
 <div id="outline-container-orgheadline3" class="outline-3">
 <h3 id="orgheadline3">Recursividad con arreglo por copia</h3>
 <div class="outline-text-3" id="text-orgheadline3">
 <p>
-El código del caso base es trivial:
+El código del caso base de la suma es trivial:
 </p>
 
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso base solamente.</span>
-<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
     <span style="color: #859900;">if</span> (arr.length == 1) {
         <span style="color: #859900;">return</span> arr[0];
     }
@@ -319,41 +307,43 @@ El código del caso base es trivial:
 </div>
 
 <p>
-Para el caso recursivo se debe saber cómo “achicar” el problema. Según lo
-explicado, en la suma se achica sumando “el resto del arreglo menos el primer
-elemento”:
+Para el caso recursivo se debe implementar el “achicamiento” del problema. En
+otras palabras, implementar:
 </p>
 
 <pre class="example">
 // Pseudo-código del caso recursivo
 if arreglo.length &gt; 1:
-    return arreglo[0] + sumarRec1(“mismo arreglo sin el primer elemento”);
+    return arreglo[0] + sumarRec("mismo arreglo sin el primer elemento");
 </pre>
 
 <p>
-O, usando el anterior arreglo de ejemplo:
+Por ejemplo:
 </p>
 
 <pre class="example">
 // Pseudo-código con un arreglo de ejemplo
 arreglo = [7, 3, 9, 5];
 if arreglo.length &gt; 1:
-    return arreglo[0] + sumarRec1([3, 9, 5]);
+    return arreglo[0] + sumarRec([3, 9, 5]);
 </pre>
 
 <p>
-En Java, para pasar de <code>[7, 3, 9, 5]</code> a <code>[3, 9, 5]</code> la única opción es realizar una
-copia del arreglo, pues no se le pueden eliminar elementos.
+En Java, para pasar de <code>[7, 3, 9, 5]</code> a <code>[3, 9, 5]</code> es necesario realizar una copia
+del arreglo, pues no se pueden eliminar elementos.
 </p>
 
 <p>
 Se podría implementar la siguiente función auxiliar:
 </p>
 
+<p>
+<a id="orgtarget1"></a>
+</p>
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve una copia del arreglo sin su primer elemento.</span>
-<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span>[] <span style="color: #268bd2;">borrarPrimero</span>(<span style="color: #b58900;">int</span>[] <span style="color: #268bd2;">arreglo</span>) {
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span>[] <span style="color: #268bd2;">borrarPrimero</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -367,25 +357,26 @@ Con esta función, el pseudo-código quedaría tal que:
 // Pseudo-código usando borrarPrimero().
 arreglo = [7, 3, 9, 5];
 if arreglo.length &gt; 1:
-    return arreglo[0] + sumarRec1(borrarPrimero(arreglo));
+    return arreglo[0] + sumarRec(borrarPrimero(arreglo));
+                                 ^^^^^^^^^^^^^^^^^^^^^^
 </pre>
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><i>sumarRec1</i></h4>
+<h4 id="orgheadline4">Función <i>sumarRec()</i></h4>
 <div class="outline-text-4" id="text-orgheadline4">
 <p>
-La versión final de <code>sumarRec1()</code> sería:
+La versión final de <code>sumarRec()</code> sería:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
     <span style="color: #859900;">if</span> (arr.length == 1) {
         <span style="color: #859900;">return</span> arr[0];
     }
     <span style="color: #859900;">if</span> (arr.length &gt; 1) {
-      <span style="color: #859900;">return</span> arr[0] + sumarRec1(borrarPrimero(arr));
+      <span style="color: #859900;">return</span> arr[0] + sumarRec(borrarPrimero(arr));
     }
     <span style="color: #859900;">return</span> 0;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">En caso de que nos pasen un arreglo vac&#237;o.</span>
 }
@@ -393,103 +384,186 @@ La versión final de <code>sumarRec1()</code> sería:
 </div>
 
 <p>
-<b>Ejercicio</b>: implementar borrarPrimero().
+Una traza de su ejecución sería:
+</p>
+
+<pre class="example">
+sumarRec([7, 3, 9, 5])
+7 + sumarRec([3, 9, 5])
+7 + 3 + sumarRec([9, 5])
+7 + 3 + 9 + sumarRec([5])
+7 + 3 + 9 + 5
+7 + 3 + 14
+7 + 17
+24
+</pre>
+
+<p>
+<b>Ejercicio 1</b>: implementar <a href="#orgtarget1">borrarPrimero()</a>.
 </p>
 </div>
 </div>
 </div>
 
+
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="todo TODO">TODO</span> Recursividad con arreglo por índice</h3>
+<h3 id="orgheadline5">Recursividad con arreglo por índice</h3>
 <div class="outline-text-3" id="text-orgheadline5">
-</div><div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><i>sumarRec2</i></h4>
-<div class="outline-text-4" id="text-orgheadline6">
 <p>
-Notar el cambio de prototipo y función auxiliar:
+La complejidad de copiar un arreglo es \(\mathcal{O}(n)\) y no cambia aunque se
+descarte el primer elemento. El problema de realizar una copia en cada paso de
+la recursión es que la complejidad total de <i>sumarRec</i> se dispara a
+\(\mathcal{O}(n^2)\).
+</p>
+
+<p>
+Para mantener la complejidad de la solución recursiva en \(\mathcal{O}(n)\) se
+debe evitar realizar copia alguna del arreglo.
+</p>
+
+<p>
+El patrón recursivo para solucionar este problema es sustituir la copia del
+arreglo por un parámetro <i>posición</i> que indica cuál es la siguiente posición a
+sumar.
+</p>
+
+<p>
+Un ejemplo sería:
+</p>
+
+<pre class="example">
+// Pseudo-código para la recursión por índice:
+
+sumarRec1([7, 3, 9, 5]) =
+
+  arr[0] + sumarRec1("mismo arreglo, pero a partir del índice 1")
+                                          ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 1") =
+
+  arr[1] + sumarRec1("mismo arreglo a partir del índice 2")
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 2") =
+
+  arr[2] + sumarRec1("mismo arreglo a partir del índice 3")
+                                    ^^^^^^^^^^^^^^^^^^^^^
+
+sumarRec1([7, 3, 9, 5], "a partir del índice 3") =
+
+  → 3 es el úlimo índice, no hay llamada recursiva
+    ^^^^^^^^^^^^^^^^^^^^
+
+  return arr[3];
+</pre>
+
+<p>
+Ahora, por tanto, la función recursiva toma dos parámetros:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
-    <span style="color: #859900;">if</span> (arr.length == 0) {
-        <span style="color: #859900;">return</span> 0;
-    }
-    <span style="color: #859900;">return</span> sumarAux(arr, 0);
-}
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>);
+</pre>
+</div>
 
-<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarAux</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+<ul class="org-ul">
+<li><b>Caso base:</b> si <i>pos</i> es el último índice válido, se devuelve directamente
+<code>arr[pos]</code>.</li>
+
+<li><b>Caso recursivo:</b> si no, se achica el problema incrementando en 1 el índice.</li>
+</ul>
+
+<p>
+El código sería:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso base: pos es el &#250;ltimo &#237;ndice del arreglo.</span>
     <span style="color: #859900;">if</span> (pos == arr.length - 1) {
         <span style="color: #859900;">return</span> arr[pos];
     }
-    <span style="color: #859900;">return</span> arr[pos] + sumarAux(arr, pos + 1);
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso recursivo: incrementar &#237;ndice en 1.</span>
+    <span style="color: #859900;">return</span> arr[pos] + sumarRec1(arr, pos + 1);
 }
 </pre>
 </div>
 </div>
-</div>
-</div>
-</div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">Función <i>mínimo</i> recursiva</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">Función <i>sumarRec1()</i></h4>
+<div class="outline-text-4" id="text-orgheadline6">
 <p>
-Ignoramos la versión por copia: ya no la usamos más.
+La firma de la función original que se pidió es:
 </p>
-</div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="todo TODO">TODO</span> Mínimo por posición</h3>
-<div class="outline-text-3" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><i>minimoRec1</i></h4>
-<div class="outline-text-4" id="text-orgheadline9">
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
-    <span style="color: #859900;">if</span> (arr.length == 0) {
-        <span style="color: #859900;">return</span> -1;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">&#191;Qu&#233; valor usar?</span>
-    }
-    <span style="color: #859900;">return</span> minimoAux1(arr, 0);
-}
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]);
+</pre>
+</div>
 
-<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+<p>
+Sin embargo, la función <i>sumarRec1</i> no cumple con esta firma, pues toma un
+parámetro adicional.
+</p>
+
+<p>
+La solución es mover el código recursivo a una función auxiliar privada:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarAux1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso base: pos es el &#250;ltimo &#237;ndice del arreglo.</span>
     <span style="color: #859900;">if</span> (pos == arr.length - 1) {
-      <span style="color: #859900;">return</span> arr[pos];
+        <span style="color: #859900;">return</span> arr[pos];
     }
-    <span style="color: #859900;">return</span> Math.min(arr[pos], minimoAux1(arr, pos + 1));
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso recursivo: incrementar &#237;ndice en 1.</span>
+    <span style="color: #859900;">return</span> arr[pos] + sumarAux1(arr, pos + 1);
 }
 </pre>
 </div>
-</div>
-</div>
-</div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="todo TODO">TODO</span> Mínimo con acumulador parcial</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-</div><div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><i>minimoRec2</i></h4>
-<div class="outline-text-4" id="text-orgheadline11">
+<p>
+Y dejar a <i>sumarRec1</i> llamar a la función auxiliar, comenzando a sumar por el
+primer elemento (índice 0):
+</p>
+
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Manejar primero el caso de un arreglo vac&#237;o.</span>
     <span style="color: #859900;">if</span> (arr.length == 0) {
-        <span style="color: #859900;">return</span> -1;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">&#191;Qu&#233; valor usar?</span>
+        <span style="color: #859900;">return</span> 0;
     }
-    <span style="color: #859900;">return</span> minimoAux2(arr, 1, arr[0]);
-}
-
-<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoParcial</span>) {
-    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nuevoParcial</span> = Math.min(arr[pos], minimoParcial);
-    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
-      <span style="color: #859900;">return</span> nuevoParcial;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Es el final.</span>
-    }
-    <span style="color: #859900;">return</span> minimoAux2(arr, pos + 1, nuevoParcial);
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Llamada a la funci&#243;n auxiliar recursiva.</span>
+    <span style="color: #859900;">return</span> sumarAux1(arr, 0);
 }
 </pre>
 </div>
+
+<p>
+Una traza de su ejecución sería:
+</p>
+
+<pre class="example">
+sumarRec1([7, 3, 9, 5])
+sumarAux1([7, 3, 9, 5], 0)
+                        ⬆
+7 + sumarAux1([7, 3, 9, 5], 1)
+                            ⬆
+7 + 3 + sumarAux1([7, 3, 9, 5], 2)
+                                ⬆
+7 + 3 + 9 sumarRec([7, 3, 9, 5], 3)
+                                 ⬆
+7 + 3 + 9 + 5
+7 + 3 + 14
+7 + 17
+24
+</pre>
 </div>
 </div>
 </div>
