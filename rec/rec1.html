@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-04-20 Wed 22:25 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>Recursión: práctica 1</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Dato Simó">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Recursión: práctica 1</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Función <i>sumar</i> recursiva</a>
+<ul>
+<li><a href="#orgheadline2">Caso base y caso recursivo</a></li>
+<li><a href="#orgheadline3">Recursividad con arreglo por copia</a>
+<ul>
+<li><a href="#orgheadline4"><i>sumarRec1</i></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5"><span class="todo TODO">TODO</span> Recursividad con arreglo por índice</a>
+<ul>
+<li><a href="#orgheadline6"><i>sumarRec2</i></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline7">Función <i>mínimo</i> recursiva</a>
+<ul>
+<li><a href="#orgheadline8"><span class="todo TODO">TODO</span> Mínimo por posición</a>
+<ul>
+<li><a href="#orgheadline9"><i>minimoRec1</i></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline10"><span class="todo TODO">TODO</span> Mínimo con acumulador parcial</a>
+<ul>
+<li><a href="#orgheadline11"><i>minimoRec2</i></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<p>
+<a href="FuncRec.java">FuncRec.java</a>
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Función <i>sumar</i> recursiva</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+Se desea implementar una función recursiva que sume todos los elementos de un
+arreglo de enteros:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]);
+</pre>
+</div>
+
+<p>
+Como referencia, esta sería la implementación iterativa:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Versi&#243;n iterativa de sumar().</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarIter</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">suma</span> = 0;
+
+    <span style="color: #859900;">for</span> (<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=0; i &lt; arr.<span style="color: #b58900;">length</span>; i++)
+        suma = suma + arr[i];
+
+    <span style="color: #859900;">return</span> suma;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Caso base y caso recursivo</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+Para pensar la función recursiva, hay que determinar el <i>caso base</i> y el <i>caso
+recursivo</i>.
+</p>
+
+<p>
+La pregunta para descubrir el caso base es:
+</p>
+
+<blockquote>
+<p>
+<b>Caso base:</b> ¿cuál es el <i>tamaño mínimo</i> del problema (esto es, el tamaño mínimo
+del arreglo) para el que se puede dar una solución <i>inmediata?</i>
+</p>
+</blockquote>
+
+<p>
+Y la pregunta para descubrir el caso recursivo:
+</p>
+
+<blockquote>
+<p>
+<b>Caso recursivo:</b> ¿si la función <i>ya supiera</i> sumar arreglos de longitud \(N\), qué
+debería hacer para sumar un arreglo de longitud \(N+1\)?
+</p>
+</blockquote>
+
+<p>
+Las respuestas para el caso de la suma son:
+</p>
+
+<ul class="org-ul">
+<li><p>
+<b>Caso base:</b> se puede dar una solución inmediata si <span class="underline">el arreglo es de tamaño
+1</span>, ya que: la suma de un arreglo con un solo elemento es, directamente, ese
+elemento, <code>arr[0]</code>:
+</p>
+
+<pre class="example">
+suma([7]) = 7
+suma([3]) = 3
+suma([0]) = 0
+suma([-1]) = -1
+</pre></li>
+
+<li><p>
+<b>Caso recursivo:</b> si por ejemplo sumar un arreglo de tres elementos (\(N = 3\))
+es ya <i>un caso resuelto</i>, se puede dar una solución a un arreglo de \(N + 1 =
+    4\) elementos <span class="underline">sumando al primer elemento la suma de los tres restantes</span>:
+</p>
+
+<pre class="example">
+suma([7, 3, 9, 5])  =  7 + suma([3, 9, 5])
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Recursividad con arreglo por copia</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+El código del caso base es trivial:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Caso base solamente.</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 1) {
+        <span style="color: #859900;">return</span> arr[0];
+    }
+}
+</pre>
+</div>
+
+<p>
+Para el caso recursivo se debe saber cómo “achicar” el problema. Según lo
+explicado, en la suma se achica sumando “el resto del arreglo menos el primer
+elemento”:
+</p>
+
+<pre class="example">
+// Pseudo-código del caso recursivo
+if arreglo.length &gt; 1:
+    return arreglo[0] + sumarRec1(“mismo arreglo sin el primer elemento”);
+</pre>
+
+<p>
+O, usando el anterior arreglo de ejemplo:
+</p>
+
+<pre class="example">
+// Pseudo-código con un arreglo de ejemplo
+arreglo = [7, 3, 9, 5];
+if arreglo.length &gt; 1:
+    return arreglo[0] + sumarRec1([3, 9, 5]);
+</pre>
+
+<p>
+En Java, para pasar de <code>[7, 3, 9, 5]</code> a <code>[3, 9, 5]</code> la única opción es realizar una
+copia del arreglo, pues no se le pueden eliminar elementos.
+</p>
+
+<p>
+Se podría implementar la siguiente función auxiliar:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve una copia del arreglo sin su primer elemento.</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">int</span>[] <span style="color: #268bd2;">borrarPrimero</span>(<span style="color: #b58900;">int</span>[] <span style="color: #268bd2;">arreglo</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div>
+
+<p>
+Con esta función, el pseudo-código quedaría tal que:
+</p>
+
+<pre class="example">
+// Pseudo-código usando borrarPrimero().
+arreglo = [7, 3, 9, 5];
+if arreglo.length &gt; 1:
+    return arreglo[0] + sumarRec1(borrarPrimero(arreglo));
+</pre>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><i>sumarRec1</i></h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<p>
+La versión final de <code>sumarRec1()</code> sería:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 1) {
+        <span style="color: #859900;">return</span> arr[0];
+    }
+    <span style="color: #859900;">if</span> (arr.length &gt; 1) {
+      <span style="color: #859900;">return</span> arr[0] + sumarRec1(borrarPrimero(arr));
+    }
+    <span style="color: #859900;">return</span> 0;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">En caso de que nos pasen un arreglo vac&#237;o.</span>
+}
+</pre>
+</div>
+
+<p>
+<b>Ejercicio</b>: implementar borrarPrimero().
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="todo TODO">TODO</span> Recursividad con arreglo por índice</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+</div><div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><i>sumarRec2</i></h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<p>
+Notar el cambio de prototipo y función auxiliar:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarRec2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> 0;
+    }
+    <span style="color: #859900;">return</span> sumarAux(arr, 0);
+}
+
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">sumarAux</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+        <span style="color: #859900;">return</span> arr[pos];
+    }
+    <span style="color: #859900;">return</span> arr[pos] + sumarAux(arr, pos + 1);
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Función <i>mínimo</i> recursiva</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<p>
+Ignoramos la versión por copia: ya no la usamos más.
+</p>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="todo TODO">TODO</span> Mínimo por posición</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><i>minimoRec1</i></h4>
+<div class="outline-text-4" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">&#191;Qu&#233; valor usar?</span>
+    }
+    <span style="color: #859900;">return</span> minimoAux1(arr, 0);
+}
+
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux1</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>) {
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+      <span style="color: #859900;">return</span> arr[pos];
+    }
+    <span style="color: #859900;">return</span> Math.min(arr[pos], minimoAux1(arr, pos + 1));
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="todo TODO">TODO</span> Mínimo con acumulador parcial</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+</div><div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><i>minimoRec2</i></h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoRec2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">if</span> (arr.length == 0) {
+        <span style="color: #859900;">return</span> -1;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">&#191;Qu&#233; valor usar?</span>
+    }
+    <span style="color: #859900;">return</span> minimoAux2(arr, 1, arr[0]);
+}
+
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoAux2</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">pos</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">minimoParcial</span>) {
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nuevoParcial</span> = Math.min(arr[pos], minimoParcial);
+    <span style="color: #859900;">if</span> (pos == arr.length - 1) {
+      <span style="color: #859900;">return</span> nuevoParcial;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Es el final.</span>
+    }
+    <span style="color: #859900;">return</span> minimoAux2(arr, pos + 1, nuevoParcial);
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
