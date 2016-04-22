@@ -1,0 +1,454 @@
+#+SETUPFILE: index.org
+#+OPTIONS: num:1
+
+* Práctica 0
+:PROPERTIES:
+:EXPORT_FILE_NAME: prog2/tp0/index.html
+:END:
+
+#+TOC: headlines 1
+
+
+** Pilas y colas
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: ejercicios
+:header-args: :noweb-ref Ejercicio1 :noweb-sep "\n\n"
+:END:
+
+*Archivo:* [[file:Ejercicio1.java][Ejercicio1.java]].
+
+a. Implementar una función que reciba una [[ColaInt][cola]] e invierta el orden de sus
+   elementos.
+   # (0.5 pts.)
+
+   #+BEGIN_SRC java
+   static void invertirCola(ColaInt cola) {
+       // Ayuda: usar una Pila como estructura auxiliar.
+   }
+   #+END_SRC
+
+b. Implementar una función que reciba una [[PilaInt][pila]] e invierta el orden de sus
+   elementos.
+   # (0.5 pts.)
+
+   #+BEGIN_SRC java
+   static void invertirPila(PilaInt pila) {
+   }
+   #+END_SRC
+
+c. Implementar una variante de ~invertirPila()~ que devuelva la pila invertida en
+   lugar de modificar la original.
+   # (1 pt.)
+
+   #+BEGIN_SRC java
+   static PilaInt pilaInversa(PilaInt pila) {
+       // Ayuda: se puede desapilar de la pila original si luego queda en su
+       // orden original al retornar de la función.
+       return null;
+   }
+   #+END_SRC
+
+d. Implementar una función que reciba dos colas ordenadas y devuelva una
+   tercera cola que sea la unión de las dos, y siga ordenada.
+   # (1 pt.)
+
+   La función se puede implementar sin usar estructuras auxiliares, pero no se
+   penalizará su uso.
+
+   #+BEGIN_SRC java
+   static ColaInt combinarOrdenadas(ColaInt c1, ColaInt c2) {
+       return null;
+   }
+   #+END_SRC
+
+   Ejemplo:
+
+   #+BEGIN_EXAMPLE
+   1.ª cola: 4 7 9 15 35 39
+   2.ª cola: 1 2 5 9 14 30 50
+
+   Resultado:
+
+       1 2 4 5 7 9 9 14 15 30 35 39 50
+   #+END_EXAMPLE
+
+
+** Recursión
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: ejercicios
+:header-args: :noweb-ref Ejercicio2 :noweb-sep "\n\n"
+:END:
+
+*Archivo:* [[file:Ejercicio2.java][Ejercicio2.java]].
+
+a. Implementar una función recursiva de búsqueda binaria sobre un arreglo
+   ordenado de enteros.
+   # (1 pt.)
+
+   #+BEGIN_SRC java
+   // Devuelve la posición del entero buscado, o -1 si no se encontró.
+   int indiceElemento(int arr[], int elemento) {
+       return indiceElementoRec(arr, elemento, 0, arr.length - 1);
+   }
+
+   // Función recursiva auxiliar.
+   private int indiceElementoRec(int arr[], int elemento, int idx0, int idx1) {
+       return -1;
+   }
+   #+END_SRC
+
+b. Implementar una versión recursiva de ~invertirCola()~ que no use estructuras
+   auxiliares.
+   # (0.5 pts.)
+
+   Es posible de implementar sin función auxiliar ~invertirColaRec()~, pero no se
+   penalizará su uso.
+
+   #+BEGIN_SRC java
+   static void invertirCola(ColaInt cola) {
+   }
+   #+END_SRC
+
+c. Implementar una función recursiva que reciba dos pilas y devuelva una
+   tercera pila resultado de mezclar, alternando, las dos pilas.
+   # (1 pt.)
+
+   No se permite usar estructuras ni funciones auxiliares. Las pilas originales
+   deben quedar en su orden original. Pre-condición: se garantiza que ambas
+   pilas tienen el mismo número de elementos.
+
+   #+BEGIN_SRC java
+   static PilaInt mezclarPilas(PilaInt p1, PilaInt p2) {
+       return null;
+   }
+   #+END_SRC
+
+   Ejemplo:
+
+   #+BEGIN_EXAMPLE
+   1.ª pila: 4 7 19 2 44 23
+             ↑
+             Tope
+
+   2.ª pila: 98 43 17 1 3 41
+             ↑
+             Tope
+
+   Resultado: 4 98 7 43 19 17 2 1 44 3 23 41
+              ↑
+              Tope
+   #+END_EXAMPLE
+
+d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
+   # (1 pt.)?
+
+   #+BEGIN_SRC java :noweb-ref quickSort
+   // Ejercicio opcional.
+   static void quickSortRec(int arreglo[]) {
+   }
+   #+END_SRC
+
+   Archivo adicional que se debe entregar: [[file:opcional/Ordenamientos.java][Ordenamientos.java]].
+
+
+** Conjuntos
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: ejercicios
+:header-args: :noweb-ref Ejercicio3 :noweb-sep "\n\n"
+:END:
+
+*Archivo:* [[file:Ejercicio3.java][Ejercicio3.java]].
+
+a. Implementar una función que, dados dos [[ConjuntoInt][conjuntos]], devuelva la unión de
+   ambos.
+   # (0.5 pts.)
+
+   #+BEGIN_SRC java
+   static ConjuntoInt union(ConjuntoInt a, ConjuntoInt b) {
+       return null;
+   }
+   #+END_SRC
+
+b. Implementar una función que, dados dos conjuntos, devuelva la intersección
+   de ambos.
+   # (0.5 pts.)
+
+   #+BEGIN_SRC java
+   static ConjuntoInt interseccion(ConjuntoInt a, ConjuntoInt b) {
+       return null;
+   }
+   #+END_SRC
+
+c. Implementar una las dos funciones anteriores como una extensión de
+   /ConjuntoInt/ (modifican el objeto actual en lugar de devolver uno nuevo).
+   # (1 pt.)
+
+   #+BEGIN_SRC java
+   class ConjuntoEj3 extends ConjuntoInt
+   {
+       void union(ConjuntoInt c) {
+       }
+
+       void interseccion(ConjuntoInt c) {
+       }
+   }
+   #+END_SRC
+
+
+** Clases y objetos
+:PROPERTIES:
+:HTML_CONTAINER_CLASS: ejercicios
+:END:
+
+*Archivo:* [[file:FechaSimple.java][FechaSimple.java]].
+
+a. Completar la clase /FechaSimple/ que se documenta a continuación:
+
+   #+BEGIN_SRC java :tangle prog2/tp0/FechaSimple.java
+   package ungs.prog2.tp0;
+
+   // TODO: write docs.
+
+   public class FechaSimple {
+
+       private int dia;
+       private int mes;
+       private int año;
+
+       public FechaSimple(int dia, int mes, int año) {
+       }
+
+       public void avanzarDias(int numDias) {
+       }
+
+       public int diferencia(FechaSimple otra) {
+           return 0;
+       }
+
+       private boolean validos(int dia, int mes, int año) {
+           return false;
+       }
+
+       @Override
+       public String toString() {
+           return format(dia, mes, año);
+       }
+
+       private String format(int dia, int mes, int año) {
+           return dia + "/" + mes + "/" + año;
+       }
+   }
+   #+END_SRC
+
+b. /(Opcional)/ Refactorizar el código de /FechaSimple/ usando una clase base
+   abstracta /BaseFecha/.
+
+   #+BEGIN_SRC java :tangle prog2/tp0/opcional/FechaSimple.java
+   package ungs.prog2.tp0.opcional;
+
+   // TODO: mencionar que no se bla bla.
+
+   public class FechaSimple extends BaseFecha
+   {
+       public FechaSimple(int dia, int mes, int año) {
+           super(dia, mes, año);
+       }
+
+       @Override
+       public void avanzarDias(int numDias) {
+       }
+
+       @Override
+       public int diferencia(BaseFecha otra) {
+           return 0;
+       }
+
+       @Override
+       protected boolean validos(int dia, int mes, int año) {
+           return false;
+       }
+   }
+   #+END_SRC
+
+   Archivos que se deben crear y entregar:
+
+     - =ungs/prog2/tp0/opcional/BaseFecha.java=
+     - =ungs/prog2/tp0/opcional/FechaSimple.java=
+
+c. /(Opcional)/ Implementar /FechaGregoriana/ que hereda también de /BaseFecha/.
+
+   # TODO: documentar clase.
+
+   Archivo que se debe crear y entregar:
+
+     - =ungs/prog2/tp0/opcional/FechaGregoriana.java=
+
+
+** Estructuras de datos
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+
+*** La clase /ColaInt/
+<<ColaInt>>
+#+BEGIN_SRC java :tangle prog2/tda/ColaInt.java :noweb yes
+package ungs.prog2.tda;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class ColaInt {
+
+    private Deque<Integer> elems;
+
+    public ColaInt() {
+        elems = new LinkedList<>();
+    }
+
+    public void encolar(int x) {
+        elems.addLast(x);
+    }
+
+    public int desencolar() {
+        return elems.removeFirst();
+    }
+
+    public int primero() {
+        return elems.peekFirst();
+    }
+
+    public boolean vacia() {
+        return elems.isEmpty();
+    }
+}
+#+END_SRC
+
+
+*** La clase /PilaInt/
+<<PilaInt>>
+#+BEGIN_SRC java :tangle prog2/tda/PilaInt.java :noweb yes
+package ungs.prog2.tda;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class PilaInt {
+
+    private Deque<Integer> elems;
+
+    public PilaInt() {
+        elems = new LinkedList<>();
+    }
+
+    public void apilar(int x) {
+        elems.addFirst(x);
+    }
+
+    public int desapilar() {
+        return elems.removeFirst();
+    }
+
+    public int tope() {
+        return elems.peekFirst();
+    }
+
+    public boolean vacia() {
+        return elems.isEmpty();
+    }
+}
+#+END_SRC
+
+
+*** La clase /ConjuntoInt/
+<<ConjuntoInt>>
+#+BEGIN_SRC java :tangle prog2/tda/ConjuntoInt.java :noweb yes
+package ungs.prog2.tda;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class ConjuntoInt implements Iterable<Integer> {
+
+    private Set<Integer> elems;
+
+    public ConjuntoInt() {
+        elems = new TreeSet<>();
+    }
+
+    public boolean agregar(int x) {
+        return elems.add(x);
+    }
+
+    public boolean pertenece(int x) {
+        return elems.contains(x);
+    }
+
+    public boolean eliminar(int x) {
+        return elems.remove(x);
+    }
+
+    public boolean vacio() {
+        return elems.isEmpty();
+    }
+
+    public int tamaño() {
+        return elems.size();
+    }
+
+    public Iterator<Integer> iterator() {
+        return elems.iterator();
+    }
+}
+#+END_SRC
+
+
+** Tangle                                                          :noexport:
+#+BEGIN_SRC java :noweb-ref package
+package ungs.prog2.tp0;
+#+END_SRC
+
+#+BEGIN_SRC java :tangle prog2/tp0/Ejercicio1.java :noweb yes
+<<package>>
+
+import ungs.prog2.tda.ColaInt;
+import ungs.prog2.tda.PilaInt;
+
+class Ejercicio1
+{
+    <<Ejercicio1>>
+}
+#+END_SRC
+
+#+BEGIN_SRC java :tangle prog2/tp0/Ejercicio2.java :noweb yes
+<<package>>
+
+import ungs.prog2.tda.ColaInt;
+import ungs.prog2.tda.PilaInt;
+
+class Ejercicio2
+{
+    <<Ejercicio2>>
+}
+#+END_SRC
+
+#+BEGIN_SRC java :tangle prog2/tp0/Ejercicio3.java :noweb yes
+<<package>>
+
+import ungs.prog2.tda.ConjuntoInt;
+
+class Ejercicio3
+{
+    <<Ejercicio3>>
+}
+#+END_SRC
+
+*** Opcionales
+#+BEGIN_SRC java :tangle prog2/tp0/opcional/Ordenamientos.java :noweb yes
+package ungs.prog2.tp0.opcional;
+
+class Ordenamientos
+{
+    <<quickSort>>
+}
+#+END_SRC
