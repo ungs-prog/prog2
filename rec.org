@@ -1,9 +1,4 @@
-#+LANGUAGE:es
-#+HTML_DOCTYPE: html5
-#+OPTIONS: html-postamble:nil
-#+OPTIONS: ^:nil toc:nil H:3 num:0
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/prog2/org.css">
-#+HTML_MATHJAX: path: "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
+#+SETUPFILE: index.org
 
 * Recursividad: práctica 1
 :PROPERTIES:
