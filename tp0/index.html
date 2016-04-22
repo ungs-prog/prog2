@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-04-22 Fri 16:22 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>Trabajo práctico 0</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Dato Simó">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/prog2/org.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Trabajo práctico 0</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Pilas y colas</a></li>
+<li><a href="#orgheadline2">2. Recursión</a></li>
+<li><a href="#orgheadline3">3. Conjuntos</a></li>
+<li><a href="#orgheadline4">4. Clases y objetos</a></li>
+<li><a href="#orgheadline5">Estructuras de datos</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2 ejercicios">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Pilas y colas</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<b>Archivo:</b> <a href="Ejercicio1.java">Ejercicio1.java</a>.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Implementar una función que reciba una <a href="#orgtarget1">cola</a> e invierta el orden de sus
+elementos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ayuda: usar una Pila como estructura auxiliar.</span>
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una función que reciba una <a href="#orgtarget2">pila</a> e invierta el orden de sus
+elementos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirPila</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una variante de <code>invertirPila()</code> que devuelva la pila invertida en
+lugar de modificar la original.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pilaInversa</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ayuda: se puede desapilar de la pila original si luego queda en su</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">orden original al retornar de la funci&#243;n.</span>
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una función que reciba dos colas ordenadas y devuelva una
+tercera cola que sea la unión de las dos, y siga ordenada.
+</p>
+
+<p>
+La función se puede implementar sin usar estructuras auxiliares, pero no se
+penalizará su uso.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">combinarOrdenadas</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c1</span>, <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c2</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div>
+
+<p>
+Ejemplo:
+</p>
+
+<pre class="example">
+1.ª cola: 4 7 9 15 35 39
+2.ª cola: 1 2 5 9 14 30 50
+
+Resultado:
+
+    1 2 4 5 7 9 9 14 15 30 35 39 50
+</pre></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline2" class="outline-2 ejercicios">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Recursión</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<b>Archivo:</b> <a href="Ejercicio2.java">Ejercicio2.java</a>.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Implementar una función recursiva de búsqueda binaria sobre un arreglo
+ordenado de enteros.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve la posici&#243;n del entero buscado, o -1 si no se encontr&#243;.</span>
+<span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElemento</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>) {
+    <span style="color: #859900;">return</span> indiceElementoRec(arr, elemento, 0, arr.length - 1);
+}
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Funci&#243;n recursiva auxiliar.</span>
+<span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElementoRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx0</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx1</span>) {
+    <span style="color: #859900;">return</span> -1;
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una versión recursiva de <code>invertirCola()</code> que no use estructuras
+auxiliares.
+</p>
+
+<p>
+Es posible de implementar sin función auxiliar <code>invertirColaRec()</code>, pero no se
+penalizará su uso.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una función recursiva que reciba dos pilas y devuelva una
+tercera pila resultado de mezclar, alternando, las dos pilas.
+</p>
+
+<p>
+No se permite usar estructuras ni funciones auxiliares. Las pilas originales
+deben quedar en su orden original. Pre-condición: se garantiza que ambas
+pilas tienen el mismo número de elementos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">mezclarPilas</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p1</span>, <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p2</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div>
+
+<p>
+Ejemplo:
+</p>
+
+<pre class="example">
+1.ª pila: 4 7 19 2 44 23
+          ↑
+          Tope
+
+2.ª pila: 98 43 17 1 3 41
+          ↑
+          Tope
+
+Resultado: 4 98 7 43 19 17 2 1 44 3 23 41
+           ↑
+           Tope
+</pre></li>
+
+<li><p>
+<i>(Opcional)</i> Implementar una versión recursiva de QuickSort:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejercicio opcional.</span>
+<span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">quickSortRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
+}
+</pre>
+</div>
+
+<p>
+Archivo adicional que se debe entregar: <a href="opcional/Ordenamientos.java">Ordenamientos.java</a>.
+</p></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-2 ejercicios">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> Conjuntos</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<b>Archivo:</b> <a href="Ejercicio3.java">Ejercicio3.java</a>.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Implementar una función que, dados dos <a href="#orgtarget3">conjuntos</a>, devuelva la unión de
+ambos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una función que, dados dos conjuntos, devuelva la intersección
+de ambos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar una las dos funciones anteriores como una extensión de
+<i>ConjuntoInt</i> (modifican el objeto actual en lugar de devolver uno nuevo).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoEj3</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">ConjuntoInt</span>
+{
+    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
+    }
+
+    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
+    }
+}
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-2 ejercicios">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> Clases y objetos</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<b>Archivo:</b> <a href="FechaSimple.java">FechaSimple.java</a>.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Completar la clase <i>FechaSimple</i> que se documenta a continuación:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tp0</span>;
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">TODO: write docs.</span>
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> {
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>;
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>;
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>;
+
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">FechaSimple</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">avanzarDias</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">numDias</span>) {
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">diferencia</span>(<span style="color: #b58900;">FechaSimple</span> <span style="color: #268bd2;">otra</span>) {
+        <span style="color: #859900;">return</span> 0;
+    }
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">validos</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+        <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">false</span>;
+    }
+
+    <span style="color: #268bd2; font-weight: bold;">@Override</span>
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">toString</span>() {
+        <span style="color: #859900;">return</span> format(dia, mes, a&#241;o);
+    }
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">format</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+        <span style="color: #859900;">return</span> dia + <span style="color: #2aa198;">"/"</span> + mes + <span style="color: #2aa198;">"/"</span> + a&#241;o;
+    }
+}
+</pre>
+</div></li>
+
+<li><p>
+<i>(Opcional)</i> Refactorizar el código de <i>FechaSimple</i> usando una clase base
+abstracta <i>BaseFecha</i>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.tp0.<span style="color: #268bd2; font-weight: bold;">opcional</span>;
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">TODO: mencionar que no se bla bla.</span>
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">BaseFecha</span>
+{
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">FechaSimple</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+        <span style="color: #859900;">super</span>(dia, mes, a&#241;o);
+    }
+
+    <span style="color: #268bd2; font-weight: bold;">@Override</span>
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">avanzarDias</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">numDias</span>) {
+    }
+
+    <span style="color: #268bd2; font-weight: bold;">@Override</span>
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">diferencia</span>(<span style="color: #b58900;">BaseFecha</span> <span style="color: #268bd2;">otra</span>) {
+        <span style="color: #859900;">return</span> 0;
+    }
+
+    <span style="color: #268bd2; font-weight: bold;">@Override</span>
+    <span style="color: #859900;">protected</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">validos</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+        <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">false</span>;
+    }
+}
+</pre>
+</div>
+
+<p>
+Archivos que se deben crear y entregar:
+</p>
+
+<ul class="org-ul">
+<li><tt>ungs/prog2/tp0/opcional/BaseFecha.java</tt></li>
+<li><tt>ungs/prog2/tp0/opcional/FechaSimple.java</tt></li>
+</ul></li>
+
+<li><p>
+<i>(Opcional)</i> Implementar <i>FechaGregoriana</i> que hereda también de <i>BaseFecha</i>.
+</p>
+
+<p>
+Archivo que se debe crear y entregar:
+</p>
+
+<ul class="org-ul">
+<li><tt>ungs/prog2/tp0/opcional/FechaGregoriana.java</tt></li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Estructuras de datos</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">La clase <i>ColaInt</i></h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+<a id="orgtarget1"></a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
+
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Deque</span>;
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">LinkedList</span>;
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ColaInt</span> {
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">Deque</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
+
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">ColaInt</span>() {
+        elems = <span style="color: #859900;">new</span> <span style="color: #b58900;">LinkedList</span>&lt;&gt;();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">encolar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span>) {
+        elems.addLast(x);
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">desencolar</span>() {
+        <span style="color: #859900;">return</span> elems.removeFirst();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">primero</span>() {
+        <span style="color: #859900;">return</span> elems.peekFirst();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">vacia</span>() {
+        <span style="color: #859900;">return</span> elems.isEmpty();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">La clase <i>PilaInt</i></h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+<a id="orgtarget2"></a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
+
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Deque</span>;
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">LinkedList</span>;
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">PilaInt</span> {
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">Deque</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
+
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">PilaInt</span>() {
+        elems = <span style="color: #859900;">new</span> <span style="color: #b58900;">LinkedList</span>&lt;&gt;();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">apilar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span>) {
+        elems.addFirst(x);
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">desapilar</span>() {
+        <span style="color: #859900;">return</span> elems.removeFirst();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">tope</span>() {
+        <span style="color: #859900;">return</span> elems.peekFirst();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">vacia</span>() {
+        <span style="color: #859900;">return</span> elems.isEmpty();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">La clase <i>ConjuntoInt</i></h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+<a id="orgtarget3"></a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
+
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Iterator</span>;
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Set</span>;
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">TreeSet</span>;
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #859900;">implements</span> <span style="color: #b58900;">Iterable</span>&lt;<span style="color: #b58900;">Integer</span>&gt; {
+
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">Set</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
+
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">ConjuntoInt</span>() {
+        elems = <span style="color: #859900;">new</span> <span style="color: #b58900;">TreeSet</span>&lt;&gt;();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">agregar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span>) {
+        <span style="color: #859900;">return</span> elems.add(x);
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">pertenece</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span>) {
+        <span style="color: #859900;">return</span> elems.contains(x);
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">eliminar</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span>) {
+        <span style="color: #859900;">return</span> elems.remove(x);
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">vacio</span>() {
+        <span style="color: #859900;">return</span> elems.isEmpty();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">tama&#241;o</span>() {
+        <span style="color: #859900;">return</span> elems.size();
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">Iterator</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">iterator</span>() {
+        <span style="color: #859900;">return</span> elems.iterator();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
