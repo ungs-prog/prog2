@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-22 Fri 16:22 -->
+<!-- 2016-04-24 Sun 16:39 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
-<title>Trabajo práctico 0</title>
+<title>Práctica 0</title>
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Dato Simó">
 <style type="text/css">
@@ -142,7 +142,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Trabajo práctico 0</h1>
+<h1 class="title">Práctica 0</h1>
 <div id="table-of-contents">
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
@@ -155,6 +155,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
+
 
 <div id="outline-container-orgheadline1" class="outline-2 ejercicios">
 <h2 id="orgheadline1"><span class="section-number-2">1</span> Pilas y colas</h2>
@@ -171,7 +172,7 @@ elementos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
     <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ayuda: usar una Pila como estructura auxiliar.</span>
 }
 </pre>
@@ -184,7 +185,7 @@ elementos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirPila</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirPila</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
 }
 </pre>
 </div></li>
@@ -196,7 +197,7 @@ lugar de modificar la original.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pilaInversa</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pilaInversa</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">pila</span>) {
     <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ayuda: se puede desapilar de la pila original si luego queda en su</span>
     <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">orden original al retornar de la funci&#243;n.</span>
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
@@ -210,13 +211,13 @@ tercera cola que sea la unión de las dos, y siga ordenada.
 </p>
 
 <p>
-La función se puede implementar sin usar estructuras auxiliares, pero no se
-penalizará su uso.
+Las colas originales deben quedar vacías, y no se permite el uso de
+estructuras auxiliares.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">combinarOrdenadas</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c1</span>, <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c2</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">combinarOrdenadas</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c1</span>, <span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">c2</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -255,12 +256,12 @@ ordenado de enteros.
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve la posici&#243;n del entero buscado, o -1 si no se encontr&#243;.</span>
-<span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElemento</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>) {
+<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElemento</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>) {
     <span style="color: #859900;">return</span> indiceElementoRec(arr, elemento, 0, arr.length - 1);
 }
 
 <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Funci&#243;n recursiva auxiliar.</span>
-<span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElementoRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx0</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx1</span>) {
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElementoRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx0</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx1</span>) {
     <span style="color: #859900;">return</span> -1;
 }
 </pre>
@@ -272,13 +273,13 @@ auxiliares.
 </p>
 
 <p>
-Es posible de implementar sin función auxiliar <code>invertirColaRec()</code>, pero no se
-penalizará su uso.
+Es posible de implementar sin introducir una función auxiliar
+<code>invertirColaRec()</code>, pero no se penalizará su uso.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">invertirCola</span>(<span style="color: #b58900;">ColaInt</span> <span style="color: #268bd2;">cola</span>) {
 }
 </pre>
 </div></li>
@@ -296,7 +297,7 @@ pilas tienen el mismo número de elementos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">mezclarPilas</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p1</span>, <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p2</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">mezclarPilas</span>(<span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p1</span>, <span style="color: #b58900;">PilaInt</span> <span style="color: #268bd2;">p2</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -327,7 +328,7 @@ Resultado: 4 98 7 43 19 17 2 1 44 3 23 41
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejercicio opcional.</span>
-<span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">quickSortRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
+<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">quickSortRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
 }
 </pre>
 </div>
@@ -355,7 +356,7 @@ ambos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -368,7 +369,7 @@ de ambos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -381,12 +382,12 @@ Implementar una las dos funciones anteriores como una extensión de
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoEj3</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">ConjuntoInt</span>
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoEj3</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">ConjuntoInt</span>
 {
-    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
     }
 
-    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
     }
 }
 </pre>
@@ -503,6 +504,7 @@ Archivo que se debe crear y entregar:
 </ol>
 </div>
 </div>
+
 
 <div id="outline-container-orgheadline5" class="outline-2">
 <h2 id="orgheadline5">Estructuras de datos</h2>
