@@ -22,7 +22,7 @@ a. Implementar una función que reciba una [[ColaInt][cola]] e invierta el orden
    # (0.5 pts.)
 
    #+BEGIN_SRC java
-   static void invertirCola(ColaInt cola) {
+   public static void invertirCola(ColaInt cola) {
        // Ayuda: usar una Pila como estructura auxiliar.
    }
    #+END_SRC
@@ -32,7 +32,7 @@ b. Implementar una función que reciba una [[PilaInt][pila]] e invierta el orden
    # (0.5 pts.)
 
    #+BEGIN_SRC java
-   static void invertirPila(PilaInt pila) {
+   public static void invertirPila(PilaInt pila) {
    }
    #+END_SRC
 
@@ -41,7 +41,7 @@ c. Implementar una variante de ~invertirPila()~ que devuelva la pila invertida e
    # (1 pt.)
 
    #+BEGIN_SRC java
-   static PilaInt pilaInversa(PilaInt pila) {
+   public static PilaInt pilaInversa(PilaInt pila) {
        // Ayuda: se puede desapilar de la pila original si luego queda en su
        // orden original al retornar de la función.
        return null;
@@ -52,11 +52,11 @@ d. Implementar una función que reciba dos colas ordenadas y devuelva una
    tercera cola que sea la unión de las dos, y siga ordenada.
    # (1 pt.)
 
-   La función se puede implementar sin usar estructuras auxiliares, pero no se
-   penalizará su uso.
+   Las colas originales deben quedar vacías, y no se permite el uso de
+   estructuras auxiliares.
 
    #+BEGIN_SRC java
-   static ColaInt combinarOrdenadas(ColaInt c1, ColaInt c2) {
+   public static ColaInt combinarOrdenadas(ColaInt c1, ColaInt c2) {
        return null;
    }
    #+END_SRC
@@ -87,12 +87,12 @@ a. Implementar una función recursiva de búsqueda binaria sobre un arreglo
 
    #+BEGIN_SRC java
    // Devuelve la posición del entero buscado, o -1 si no se encontró.
-   int indiceElemento(int arr[], int elemento) {
+   public static int indiceElemento(int arr[], int elemento) {
        return indiceElementoRec(arr, elemento, 0, arr.length - 1);
    }
 
    // Función recursiva auxiliar.
-   private int indiceElementoRec(int arr[], int elemento, int idx0, int idx1) {
+   private static int indiceElementoRec(int arr[], int elemento, int idx0, int idx1) {
        return -1;
    }
    #+END_SRC
@@ -101,11 +101,11 @@ b. Implementar una versión recursiva de ~invertirCola()~ que no use estructuras
    auxiliares.
    # (0.5 pts.)
 
-   Es posible de implementar sin función auxiliar ~invertirColaRec()~, pero no se
-   penalizará su uso.
+   Es posible de implementar sin introducir una función auxiliar
+   ~invertirColaRec()~, pero no se penalizará su uso.
 
    #+BEGIN_SRC java
-   static void invertirCola(ColaInt cola) {
+   public static void invertirCola(ColaInt cola) {
    }
    #+END_SRC
 
@@ -118,7 +118,7 @@ c. Implementar una función recursiva que reciba dos pilas y devuelva una
    pilas tienen el mismo número de elementos.
 
    #+BEGIN_SRC java
-   static PilaInt mezclarPilas(PilaInt p1, PilaInt p2) {
+   public static PilaInt mezclarPilas(PilaInt p1, PilaInt p2) {
        return null;
    }
    #+END_SRC
@@ -144,7 +144,7 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
 
    #+BEGIN_SRC java :noweb-ref quickSort
    // Ejercicio opcional.
-   static void quickSortRec(int arreglo[]) {
+   public static void quickSortRec(int arreglo[]) {
    }
    #+END_SRC
 
@@ -164,7 +164,7 @@ a. Implementar una función que, dados dos [[ConjuntoInt][conjuntos]], devuelva 
    # (0.5 pts.)
 
    #+BEGIN_SRC java
-   static ConjuntoInt union(ConjuntoInt a, ConjuntoInt b) {
+   public static ConjuntoInt union(ConjuntoInt a, ConjuntoInt b) {
        return null;
    }
    #+END_SRC
@@ -174,7 +174,7 @@ b. Implementar una función que, dados dos conjuntos, devuelva la intersección
    # (0.5 pts.)
 
    #+BEGIN_SRC java
-   static ConjuntoInt interseccion(ConjuntoInt a, ConjuntoInt b) {
+   public static ConjuntoInt interseccion(ConjuntoInt a, ConjuntoInt b) {
        return null;
    }
    #+END_SRC
@@ -184,12 +184,12 @@ c. Implementar una las dos funciones anteriores como una extensión de
    # (1 pt.)
 
    #+BEGIN_SRC java
-   class ConjuntoEj3 extends ConjuntoInt
+   public class ConjuntoEj3 extends ConjuntoInt
    {
-       void union(ConjuntoInt c) {
+       public void union(ConjuntoInt c) {
        }
 
-       void interseccion(ConjuntoInt c) {
+       public void interseccion(ConjuntoInt c) {
        }
    }
    #+END_SRC
@@ -414,7 +414,7 @@ package ungs.prog2.tp0;
 import ungs.prog2.tda.ColaInt;
 import ungs.prog2.tda.PilaInt;
 
-class Ejercicio1
+public class Ejercicio1
 {
     <<Ejercicio1>>
 }
@@ -426,7 +426,7 @@ class Ejercicio1
 import ungs.prog2.tda.ColaInt;
 import ungs.prog2.tda.PilaInt;
 
-class Ejercicio2
+public class Ejercicio2
 {
     <<Ejercicio2>>
 }
@@ -437,7 +437,7 @@ class Ejercicio2
 
 import ungs.prog2.tda.ConjuntoInt;
 
-class Ejercicio3
+public class Ejercicio3
 {
     <<Ejercicio3>>
 }
