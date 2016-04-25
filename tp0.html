@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-25 Mon 09:53 -->
+<!-- 2016-04-25 Mon 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Práctica 0</title>
@@ -386,7 +386,8 @@ unión de ambos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve la uni&#243;n de a y b, que quedan sin modificar.</span>
+<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -399,7 +400,8 @@ de ambos.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve la intersecci&#243;n de a y b, que quedan sin modificar.</span>
+<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">a</span>, <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">b</span>) {
     <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
 }
 </pre>
@@ -414,9 +416,11 @@ Implementar una las dos funciones anteriores como una extensión de
 
 <pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoEj3</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">ConjuntoInt</span>
 {
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">A&#241;ade al conjunto actual todos los elementos del Conjunto c.</span>
     <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">union</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
     }
 
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Convierte al conjunto actual en la intersecci&#243;n con el Conjunto c.</span>
     <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">interseccion</span>(<span style="color: #b58900;">ConjuntoInt</span> <span style="color: #268bd2;">c</span>) {
     }
 }
@@ -443,26 +447,40 @@ Completar la clase <i>FechaSimple</i> que se documenta a continuación:
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tp0</span>;
 
-<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">TODO: write docs.</span>
-
 <span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> {
 
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>;
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>;
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>;
 
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Funci&#243;n de validaci&#243;n: devuelve &#8216;true&#8217; si dia/mes/a&#241;o</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">es una fecha v&#225;lida.</span>
+    <span style="color: #586e75; font-style: italic;">//</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">FechaSimple es v&#225;lida si &#8216;dia&#8217; est&#225; entre 1 y 31, &#8216;mes&#8217;</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">entre 1 y 12 y &#8216;a&#241;o&#8217; entre 1 y 9999.</span>
+    <span style="color: #586e75; font-style: italic;">//</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Es decir, FechaSimple es una variante simplificada del calendario</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">gregoriano en la que todos los meses tienen el mismo n&#250;mero de d&#237;as.</span>
+    <span style="color: #859900;">private</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">validos</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
+        <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">false</span>;
+    }
+
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Construye un objeto de tipo Fecha, usando la funci&#243;n</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">validos() para validar. Si la fecha no es v&#225;lida, lanza</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">la excepci&#243;n RuntimeException, incluyendo el valor de</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">la fecha inv&#225;lida.</span>
     <span style="color: #859900;">public</span> <span style="color: #268bd2;">FechaSimple</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
     }
 
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Avanza la fecha un n&#250;mero d&#237;as (se debe validar que</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">&#8216;numDias&#8217; es un entero positivo).</span>
     <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">avanzarDias</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">numDias</span>) {
     }
 
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve el n&#250;mero de d&#237;as desde una fecha a otra. Devuelve</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">un valor positivo si this &gt;= otra, negativo en caso contrario.</span>
     <span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">diferencia</span>(<span style="color: #b58900;">FechaSimple</span> <span style="color: #268bd2;">otra</span>) {
         <span style="color: #859900;">return</span> 0;
-    }
-
-    <span style="color: #859900;">private</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">validos</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
-        <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">false</span>;
     }
 
     <span style="color: #268bd2; font-weight: bold;">@Override</span>
@@ -486,7 +504,10 @@ abstracta <i>BaseFecha</i>.
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.tp0.<span style="color: #268bd2; font-weight: bold;">opcional</span>;
 
-<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">TODO: mencionar que no se bla bla.</span>
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Estos son los m&#233;todos espec&#237;ficos a FechaSimple.</span>
+<span style="color: #586e75; font-style: italic;">//</span>
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">No se deben agregar m&#233;todos privados si tiene sentido</span>
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">agregarlos a la propia clase base BaseFecha.</span>
 
 <span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">BaseFecha</span>
 {
@@ -633,6 +654,12 @@ Archivo que se debe crear y entregar:
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">TreeSet</span>;
 
 <span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #859900;">implements</span> <span style="color: #b58900;">Iterable</span>&lt;<span style="color: #b58900;">Integer</span>&gt; {
+
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">NOTA: la clase Conjunto es iterable, por lo que se puede escribir:</span>
+    <span style="color: #586e75; font-style: italic;">//</span>
+    <span style="color: #586e75; font-style: italic;">//    </span><span style="color: #586e75;">for (int x : conj) { ... }</span>
+    <span style="color: #586e75; font-style: italic;">//</span>
+    <span style="color: #586e75; font-style: italic;">//    </span><span style="color: #586e75;">for (int x : this) { ... }</span>
 
     <span style="color: #859900;">private</span> <span style="color: #b58900;">Set</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
 
