@@ -6,7 +6,6 @@ public class Ordenamientos
     // implementarlo.
     public static final boolean RESUELTO = false;
 
-    // Ejercicio opcional.
     public static void quickSortRec(int arreglo[]) {
     }
 }
