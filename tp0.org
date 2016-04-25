@@ -186,7 +186,6 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
    # (1 pt.)?
 
    #+BEGIN_SRC java :noweb-ref quickSort
-   // Ejercicio opcional.
    public static void quickSortRec(int arreglo[]) {
    }
    #+END_SRC
@@ -307,7 +306,9 @@ b. /(Opcional)/ Refactorizar el código de /FechaSimple/ usando una clase base
    abstracta /BaseFecha/.
 
    #+BEGIN_SRC java
-   package ungs.prog2.tp0.opcional;
+   package ungs.prog2.tp0;
+
+   import ungs.prog2.tp0.opcional.BaseFecha;
 
    // Estos son los métodos específicos a FechaSimple.
    //
@@ -336,16 +337,24 @@ b. /(Opcional)/ Refactorizar el código de /FechaSimple/ usando una clase base
    }
    #+END_SRC
 
-   Archivos que se deben crear y entregar:
+   Archivo adicional que se debe crear y entregar:
 
      - =ungs/prog2/tp0/opcional/BaseFecha.java=
-     - =ungs/prog2/tp0/opcional/FechaSimple.java=
 
 c. /(Opcional)/ Implementar /FechaGregoriana/ que hereda también de /BaseFecha/.
 
    # TODO: documentar clase.
 
-   Archivo que se debe crear y entregar:
+   #+BEGIN_SRC java :tangle prog2/tp0/opcional/FechaGregoriana.java
+   package ungs.prog2.tp0.opcional;
+
+   public class FechaGregoriana // extends BaseFecha
+   {
+       public static final boolean RESUELTO = false;
+   }
+   #+END_SRC
+
+   Archivo adicional que se debe crear y entregar:
 
      - =ungs/prog2/tp0/opcional/FechaGregoriana.java=
 
