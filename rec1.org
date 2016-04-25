@@ -1,15 +1,11 @@
-#+SETUPFILE: index.org
+#+TITLE: Recursividad: práctica 1
+#+SETUPFILE: .level.org
+#+OPTIONS: toc:3
+#+BIND: org-src-preserve-indentation:t
 
-* Recursividad: práctica 1
-:PROPERTIES:
-:EXPORT_FILE_NAME: prog2/rec1/index.html
-:END:
+* Función /sumar/ recursiva
 
-#+TOC: headlines 3
-
-** Función /sumar/ recursiva
-
-*Archivo de código:* [[file:SumarRec.java][SumarRec.java]].
+*Archivo de código:* [[file:rec1/SumarRec.java][SumarRec.java]].
 
 Se desea implementar una función recursiva que sume todos los elementos de un
 arreglo de enteros:
@@ -34,7 +30,7 @@ static int sumarIter(int arr[]) {
 }
 #+END_SRC
 
-*** Caso base y caso recursivo
+** Caso base y caso recursivo
 
 Para pensar la función recursiva, hay que determinar el /caso base/ y el /caso
 recursivo/.
@@ -75,7 +71,7 @@ Las respuestas para el caso de la suma son:
     #+END_EXAMPLE
 
 
-*** Recursividad con arreglo por copia
+** Recursividad con arreglo por copia
 
 El código del caso base de la suma es trivial:
 
@@ -129,7 +125,7 @@ if arreglo.length > 1:
                                  ^^^^^^^^^^^^^^^^^^^^^^
 #+END_EXAMPLE
 
-**** Función /sumarRec()/
+*** Función /sumarRec()/
 
 La versión final de ~sumarRec()~ sería:
 
@@ -161,7 +157,7 @@ sumarRec([7, 3, 9, 5])
 *Ejercicio 1*: implementar [[borrarPrimero][borrarPrimero()]].
 
 
-*** Recursividad con arreglo por índice
+** Recursividad con arreglo por índice
 
 La complejidad de copiar un arreglo es $\mathcal{O}(n)$ y no cambia aunque se
 descarte el primer elemento. El problema de realizar una copia en cada paso de
@@ -227,7 +223,7 @@ static int sumarRec1(int arr[], int pos) {
 }
 #+END_SRC
 
-**** Función /sumarRec1()/
+*** Función /sumarRec1()/
 
 La firma de la función original que se pidió es:
 
@@ -284,9 +280,11 @@ sumarAux1([7, 3, 9, 5], 0)
 #+END_EXAMPLE
 
 
-*** Tangle                                                         :noexport:
+** Tangle                                                          :noexport:
 
 #+BEGIN_SRC java :tangle prog2/rec1/SumarRec.java :noweb yes
+package ungs.prog2.rec1;
+
 class SumarRec {
 
     <<sumarIter>>
@@ -295,8 +293,6 @@ class SumarRec {
     <<sumarRec1>>
 
     <<sumarAux1>>
-
-    // TODO: Ejercicio 2: implementar sumarRec2().
 
     // Versión recursiva con copia del arreglo.
     //
@@ -310,7 +306,146 @@ class SumarRec {
 #+END_SRC
 
 
-** COMMENT Local variables
-# Local Variables:
-# org-src-preserve-indentation: t
-# End:
+* Función /mínimo/ recursiva
+
+*Archivo de código:* [[file:rec1/MinimoRec.java][MinimoRec.java]].
+
+Se desea implementar una función recursiva que encuentre el mínimo de un
+arreglo. Si el arreglo está vacío, debe devolver -1.
+
+#+BEGIN_SRC java
+static int minimo(int arr[]);
+#+END_SRC
+
+La versión iterativa se puede escribir usando el operador comparacion ~<~ o
+usando la función de Java [[https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html#min(int,%2520int)][Math.min()]], que devuelve el menor de dos números.
+
+Es importante darse cuenta que ambas son equivalentes. Por brevedad, en general
+en las versiones recursivas se usará exclusivamente Math.min().
+
+#+BEGIN_SRC java :noweb-ref minimoIter1
+// Versión iterativa con comparación directa.
+static int minimoIter1(int arr[]) {
+    if (arr.length == 0) {
+        return -1;
+    }
+    int minimo = arr[0];
+
+    for (int i=1; i < arr.length; i++)
+        if (arr[i] < minimo)
+            minimo = arr[i];
+
+    return minimo;
+}
+#+END_SRC
+
+En la segunda versión, el src_java[:exports code]{if} se sustituye por una
+llamada a Math.min():
+
+#+BEGIN_SRC java :noweb-ref minimoIter2
+// Versión iterativa con Math.min().
+static int minimoIter2(int arr[]) {
+    if (arr.length == 0) {
+        return -1;
+    }
+    int minimoParcial = arr[0];
+
+    for (int i=1; i < arr.length; i++)
+        minimoParcial = Math.min(arr[1], minimoParcial);
+
+    return minimoParcial;  // Resultado final.
+}
+#+END_SRC
+
+** Recursividad por índice
+
+[Pendiente de explicar.]
+
+*** Función /minimoRec1()/
+
+Siguiendo el mismo patrón que en sumarRec1:
+
+#+BEGIN_SRC java :noweb-ref minimoRec1
+static int minimoRec1(int arr[]) {
+    // Manejar primero el caso de un arreglo vacío.
+    if (arr.length == 0) {
+        return -1;
+    }
+    // Llamada a la función auxiliar recursiva.
+    return minimoAux1(arr, 0);
+}
+
+private static int minimoAux1(int arr[], int pos) {
+    // Caso base: pos es el último índice del arreglo.
+    if (pos == arr.length - 1) {
+      return arr[pos];
+    }
+    // Caso recursivo: incrementar índice en 1.
+    return Math.min(arr[pos], minimoAux1(arr, pos + 1));
+}
+#+END_SRC
+
+*Ejercicio 2:* implementar una versión de /minimoAux1/ que use un ~if~ en lugar de
+una llamada a Math.min().
+
+
+** Recursividad con acumulador parcial
+
+[Pendiente de explicar.]
+
+*** Función /minimoRec2()/
+
+#+BEGIN_SRC java
+private static int minimoAux2(int arr[], int pos, int minimoParcial) {
+    if (pos == arr.length - 1) {
+      return Math.min(arr[pos], minimoParcial);
+    }
+    return minimoAux2(arr, pos + 1,
+                      Math.min(arr[pos], nuevoParcial));
+}
+#+END_SRC
+
+Extrayendo a una variable local:
+
+#+BEGIN_SRC java :noweb-ref minimoAux2
+private static int minimoAux2(int arr[], int pos, int minimoParcial)
+{
+    int nuevoParcial = Math.min(arr[pos], minimoParcial);
+
+    if (pos == arr.length - 1) {
+      return nuevoParcial;  // Es el final.
+    }
+    return minimoAux2(arr, pos + 1, nuevoParcial);
+}
+#+END_SRC
+
+#+BEGIN_SRC java :noweb-ref minimoRec2
+static int minimoRec2(int arr[]) {
+    if (arr.length == 0) {
+        return -1;
+    }
+    // El primer "minimoParcial" es el primer elemento.
+    return minimoAux2(arr, 1, arr[0]);
+}
+#+END_SRC
+
+** Tangle                                                          :noexport:
+
+#+BEGIN_SRC java :tangle prog2/rec1/MinimoRec.java :noweb yes
+package ungs.prog2.rec1;
+
+class MinimoRec {
+
+    <<minimoIter2>>
+
+    // Versión con posición.
+    <<minimoRec1>>
+
+    // Versión con posición y acumulador (resultado parcial).
+    <<minimoRec2>>
+
+    <<minimoAux2>>
+
+}
+#+END_SRC
+

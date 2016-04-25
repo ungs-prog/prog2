@@ -1,14 +1,5 @@
-#+LANGUAGE:es
-#+HTML_DOCTYPE: html5
-#+OPTIONS: html-postamble:nil
-#+OPTIONS: ^:nil toc:nil H:3 num:0
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/prog2/org.css">
-#+HTML_MATHJAX: path: "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
-
-* Programación 2
-:PROPERTIES:
-:EXPORT_FILE_NAME: prog2/index.html
-:END:
+#+TITLE: Programación 2
+#+SETUPFILE: .level.org
 
 - Recursividad
-  - [[file:rec1/][Práctica 1]]
+  - [[file:rec.org][Práctica 1]]
