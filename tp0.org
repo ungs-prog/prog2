@@ -255,8 +255,8 @@ a. Completar la clase /FechaSimple/ que se documenta a continuación:
    #+BEGIN_SRC java :tangle prog2/tp0/FechaSimple.java
    package ungs.prog2.tp0;
 
-   public class FechaSimple {
-
+   public class FechaSimple
+   {
        private int dia;
        private int mes;
        private int año;
@@ -350,6 +350,8 @@ c. /(Opcional)/ Implementar /FechaGregoriana/ que hereda también de /BaseFecha/
 
    public class FechaGregoriana // extends BaseFecha
    {
+       // Ejercicio OPCIONAL. Cambiar RESUELTO a ‘true’ en caso de
+       // implementarlo.
        public static final boolean RESUELTO = false;
    }
    #+END_SRC
@@ -374,8 +376,8 @@ package ungs.prog2.tda;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class ColaInt {
-
+public class ColaInt
+{
     private Deque<Integer> elems;
 
     public ColaInt() {
@@ -411,8 +413,8 @@ package ungs.prog2.tda;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class PilaInt {
-
+public class PilaInt
+{
     private Deque<Integer> elems;
 
     public PilaInt() {
@@ -449,8 +451,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class ConjuntoInt implements Iterable<Integer> {
-
+public class ConjuntoInt implements Iterable<Integer>
+{
     // NOTA: la clase Conjunto es iterable, por lo que se puede escribir:
     //
     //    for (int x : conj) { ... }
