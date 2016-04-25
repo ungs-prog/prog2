@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-21 Thu 15:42 -->
+<!-- 2016-04-24 Sun 23:47 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Recursividad: práctica 1</title>
@@ -92,7 +92,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/prog2/org.css">
+<link rel="stylesheet" type="text/css" href="css/org.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -160,7 +160,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -172,30 +172,14 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">Función <i>sumar</i> recursiva</a>
 <ul>
 <li><a href="#orgheadline2">Caso base y caso recursivo</a></li>
-<li><a href="#orgheadline3">Recursividad con arreglo por copia</a>
-<ul>
-<li><a href="#orgheadline4">Función <i>sumarRec()</i></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline5">Recursividad con arreglo por índice</a>
-<ul>
-<li><a href="#orgheadline6">Función <i>sumarRec1()</i></a></li>
-</ul>
-</li>
+<li><a href="#orgheadline3">Recursividad con arreglo por copia</a></li>
+<li><a href="#orgheadline5">Recursividad con arreglo por índice</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline7">Función <i>mínimo</i> recursiva</a>
 <ul>
-<li><a href="#orgheadline8">Recursividad por índice</a>
-<ul>
-<li><a href="#orgheadline9">Función <i>minimoRec1()</i></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline10">Recursividad con acumulador parcial</a>
-<ul>
-<li><a href="#orgheadline11">Función <i>minimoRec2()</i></a></li>
-</ul>
-</li>
+<li><a href="#orgheadline8">Recursividad por índice</a></li>
+<li><a href="#orgheadline10">Recursividad con acumulador parcial</a></li>
 </ul>
 </li>
 </ul>
@@ -206,7 +190,7 @@ for the JavaScript code in this tag.
 <h2 id="orgheadline1">Función <i>sumar</i> recursiva</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
-<b>Archivo de código:</b> <a href="SumarRec.java">SumarRec.java</a>.
+<b>Archivo de código:</b> <a href="rec1/SumarRec.java">SumarRec.java</a>.
 </p>
 
 <p>
@@ -343,7 +327,7 @@ if arreglo.length &gt; 1:
 </pre>
 
 <p>
-En Java, para pasar de <code>[7, 3, 9, 5]</code> a <code>[3, 9, 5]</code> es necesario realizar una copia
+En Java, para pasar de <tt>[7, 3, 9, 5]</tt> a <tt>[3, 9, 5]</tt> es necesario realizar una copia
 del arreglo, pues no se pueden eliminar elementos.
 </p>
 
@@ -588,7 +572,7 @@ sumarAux1([7, 3, 9, 5], 0)
 <h2 id="orgheadline7">Función <i>mínimo</i> recursiva</h2>
 <div class="outline-text-2" id="text-orgheadline7">
 <p>
-<b>Archivo de código:</b> <a href="MinimoRec.java">MinimoRec.java</a>.
+<b>Archivo de código:</b> <a href="rec1/MinimoRec.java">MinimoRec.java</a>.
 </p>
 
 <p>

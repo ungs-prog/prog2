@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-24 Sun 16:39 -->
+<!-- 2016-04-24 Sun 23:54 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Práctica 0</title>
@@ -92,7 +92,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/prog2/org.css">
+<link rel="stylesheet" type="text/css" href="css/org.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -143,31 +143,53 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Práctica 0</h1>
+<p>
+<b>Lineamientos (?):</b>
+</p>
+
+<ul class="org-ul">
+<li>Fecha límite de entrega: día de la presentación del TP1 (¿6.ª semana?)</li>
+<li>Se permiten reentregas</li>
+<li>Se permiten entregas separadas de cada ejercicio
+<ul class="org-ul">
+<li><b>¿Alternativa?</b>: fechas de entrega por ejercicio</li>
+</ul></li>
+</ul>
+
+<p>
+<b>Modo de entrega</b>:
+</p>
+
+<ul class="org-ul">
+<li>corrector automático</li>
+<li>papel (formato eclipse?)</li>
+</ul>
+
 <div id="table-of-contents">
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Pilas y colas</a></li>
-<li><a href="#orgheadline2">2. Recursión</a></li>
-<li><a href="#orgheadline3">3. Conjuntos</a></li>
-<li><a href="#orgheadline4">4. Clases y objetos</a></li>
-<li><a href="#orgheadline5">Estructuras de datos</a></li>
+<li><a href="#ej1">1. Pilas y colas</a></li>
+<li><a href="#ej2">2. Recursión</a></li>
+<li><a href="#ej3">3. Conjuntos</a></li>
+<li><a href="#ej4">4. Clases y objetos</a></li>
+<li><a href="#orgheadline1">Estructuras de datos</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-2 ejercicios">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Pilas y colas</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline2" class="outline-2 ejercicios">
+<h2 id="ej1"><a id="orgheadline2"></a><span class="section-number-2">1</span> Pilas y colas</h2>
+<div class="outline-text-2" id="text-ej1">
 <p>
-<b>Archivo:</b> <a href="Ejercicio1.java">Ejercicio1.java</a>.
+<b>Archivo:</b> <a href="tp0/Ejercicio1.java">Ejercicio1.java</a>.
 </p>
 
 <ol class="org-ol">
 <li><p>
-Implementar una función que reciba una <a href="#orgtarget1">cola</a> e invierta el orden de sus
-elementos.
+Implementar una función que reciba una <a href="#ColaInt">cola de enteros</a> e invierta el orden
+de sus elementos.
 </p>
 
 <div class="org-src-container">
@@ -179,8 +201,8 @@ elementos.
 </div></li>
 
 <li><p>
-Implementar una función que reciba una <a href="#orgtarget2">pila</a> e invierta el orden de sus
-elementos.
+Implementar una función que reciba una <a href="#PilaInt">pila de enteros</a> e invierta el orden
+de sus elementos.
 </p>
 
 <div class="org-src-container">
@@ -206,8 +228,8 @@ lugar de modificar la original.
 </div></li>
 
 <li><p>
-Implementar una función que reciba dos colas ordenadas y devuelva una
-tercera cola que sea la unión de las dos, y siga ordenada.
+Implementar una función que reciba dos colas de enteros ordenadas y devuelva
+una tercera cola que sea la unión de las dos, y siga ordenada.
 </p>
 
 <p>
@@ -240,11 +262,11 @@ Resultado:
 </div>
 
 
-<div id="outline-container-orgheadline2" class="outline-2 ejercicios">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Recursión</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline3" class="outline-2 ejercicios">
+<h2 id="ej2"><a id="orgheadline3"></a><span class="section-number-2">2</span> Recursión</h2>
+<div class="outline-text-2" id="text-ej2">
 <p>
-<b>Archivo:</b> <a href="Ejercicio2.java">Ejercicio2.java</a>.
+<b>Archivo:</b> <a href="tp0/Ejercicio2.java">Ejercicio2.java</a>.
 </p>
 
 <ol class="org-ol">
@@ -285,8 +307,8 @@ Es posible de implementar sin introducir una función auxiliar
 </div></li>
 
 <li><p>
-Implementar una función recursiva que reciba dos pilas y devuelva una
-tercera pila resultado de mezclar, alternando, las dos pilas.
+Implementar una función recursiva que reciba dos pilas de enteros y devuelva
+una tercera pila resultado de mezclar, alternando, las dos pilas.
 </p>
 
 <p>
@@ -334,24 +356,24 @@ Resultado: 4 98 7 43 19 17 2 1 44 3 23 41
 </div>
 
 <p>
-Archivo adicional que se debe entregar: <a href="opcional/Ordenamientos.java">Ordenamientos.java</a>.
+Archivo adicional que se debe entregar: <a href="tp0/opcional/Ordenamientos.java">Ordenamientos.java</a>.
 </p></li>
 </ol>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline3" class="outline-2 ejercicios">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> Conjuntos</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline4" class="outline-2 ejercicios">
+<h2 id="ej3"><a id="orgheadline4"></a><span class="section-number-2">3</span> Conjuntos</h2>
+<div class="outline-text-2" id="text-ej3">
 <p>
-<b>Archivo:</b> <a href="Ejercicio3.java">Ejercicio3.java</a>.
+<b>Archivo:</b> <a href="tp0/Ejercicio3.java">Ejercicio3.java</a>.
 </p>
 
 <ol class="org-ol">
 <li><p>
-Implementar una función que, dados dos <a href="#orgtarget3">conjuntos</a>, devuelva la unión de
-ambos.
+Implementar una función que, dados dos <a href="#ConjuntoInt">conjuntos de enteros</a>, devuelva la
+unión de ambos.
 </p>
 
 <div class="org-src-container">
@@ -397,11 +419,11 @@ Implementar una las dos funciones anteriores como una extensión de
 </div>
 
 
-<div id="outline-container-orgheadline4" class="outline-2 ejercicios">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> Clases y objetos</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline5" class="outline-2 ejercicios">
+<h2 id="ej4"><a id="orgheadline5"></a><span class="section-number-2">4</span> Clases y objetos</h2>
+<div class="outline-text-2" id="text-ej4">
 <p>
-<b>Archivo:</b> <a href="FechaSimple.java">FechaSimple.java</a>.
+<b>Archivo:</b> <a href="tp0/FechaSimple.java">FechaSimple.java</a>.
 </p>
 
 <ol class="org-ol">
@@ -506,17 +528,14 @@ Archivo que se debe crear y entregar:
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">Estructuras de datos</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Estructuras de datos</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">La clase <i>ColaInt</i></h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-<a id="orgtarget1"></a>
-</p>
+<h3 id="ColaInt"><a id="orgheadline6"></a>La clase <i>ColaInt</i></h3>
+<div class="outline-text-3" id="text-ColaInt">
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
@@ -555,11 +574,8 @@ Archivo que se debe crear y entregar:
 
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">La clase <i>PilaInt</i></h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<p>
-<a id="orgtarget2"></a>
-</p>
+<h3 id="PilaInt"><a id="orgheadline7"></a>La clase <i>PilaInt</i></h3>
+<div class="outline-text-3" id="text-PilaInt">
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
@@ -598,11 +614,8 @@ Archivo que se debe crear y entregar:
 
 
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">La clase <i>ConjuntoInt</i></h3>
-<div class="outline-text-3" id="text-orgheadline8">
-<p>
-<a id="orgtarget3"></a>
-</p>
+<h3 id="ConjuntoInt"><a id="orgheadline8"></a>La clase <i>ConjuntoInt</i></h3>
+<div class="outline-text-3" id="text-ConjuntoInt">
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tda</span>;
