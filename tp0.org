@@ -208,6 +208,7 @@ a. Implementar una función que, dados dos [[#ConjuntoInt][conjuntos de enteros]
    # (0.5 pts.)
 
    #+BEGIN_SRC java
+   // Devuelve la unión de a y b, que quedan sin modificar.
    public static ConjuntoInt union(ConjuntoInt a, ConjuntoInt b) {
        return null;
    }
@@ -218,6 +219,7 @@ b. Implementar una función que, dados dos conjuntos, devuelva la intersección
    # (0.5 pts.)
 
    #+BEGIN_SRC java
+   // Devuelve la intersección de a y b, que quedan sin modificar.
    public static ConjuntoInt interseccion(ConjuntoInt a, ConjuntoInt b) {
        return null;
    }
@@ -230,9 +232,11 @@ c. Implementar una las dos funciones anteriores como una extensión de
    #+BEGIN_SRC java
    public class ConjuntoEj3 extends ConjuntoInt
    {
+       // Añade al conjunto actual todos los elementos del Conjunto c.
        public void union(ConjuntoInt c) {
        }
 
+       // Convierte al conjunto actual en la intersección con el Conjunto c.
        public void interseccion(ConjuntoInt c) {
        }
    }
@@ -420,6 +424,12 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class ConjuntoInt implements Iterable<Integer> {
+
+    // NOTA: la clase Conjunto es iterable, por lo que se puede escribir:
+    //
+    //    for (int x : conj) { ... }
+    //
+    //    for (int x : this) { ... }
 
     private Set<Integer> elems;
 
