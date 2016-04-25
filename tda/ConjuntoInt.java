@@ -6,6 +6,12 @@ import java.util.TreeSet;
 
 public class ConjuntoInt implements Iterable<Integer> {
 
+    // NOTA: la clase Conjunto es iterable, por lo que se puede escribir:
+    //
+    //    for (int x : conj) { ... }
+    //
+    //    for (int x : this) { ... }
+
     private Set<Integer> elems;
 
     public ConjuntoInt() {
