@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-25 Mon 13:51 -->
+<!-- 2016-04-25 Mon 14:27 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Práctica 0</title>
@@ -357,8 +357,7 @@ Resultado: 4 98 7 43 19 17 2 1 44 3 23 41
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejercicio opcional.</span>
-<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">quickSortRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
+<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">quickSortRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arreglo</span>[]) {
 }
 </pre>
 </div>
@@ -447,8 +446,8 @@ Completar la clase <i>FechaSimple</i> que se documenta a continuación:
 
 <pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tp0</span>;
 
-<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> {
-
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span>
+{
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>;
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>;
     <span style="color: #859900;">private</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>;
@@ -502,7 +501,9 @@ abstracta <i>BaseFecha</i>.
 
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.tp0.<span style="color: #268bd2; font-weight: bold;">opcional</span>;
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.<span style="color: #268bd2; font-weight: bold;">tp0</span>;
+
+<span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">ungs</span>.<span style="color: #268bd2; font-weight: bold;">prog2</span>.<span style="color: #268bd2; font-weight: bold;">tp0</span>.<span style="color: #268bd2; font-weight: bold;">opcional</span>.<span style="color: #b58900;">BaseFecha</span>;
 
 <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Estos son los m&#233;todos espec&#237;ficos a FechaSimple.</span>
 <span style="color: #586e75; font-style: italic;">//</span>
@@ -511,8 +512,6 @@ abstracta <i>BaseFecha</i>.
 
 <span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaSimple</span> <span style="color: #859900;">extends</span> <span style="color: #b58900;">BaseFecha</span>
 {
-    <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #859900;">final</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">RESUELTO</span> = <span style="color: #268bd2; font-weight: bold;">true</span>;
-
     <span style="color: #859900;">public</span> <span style="color: #268bd2;">FechaSimple</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">dia</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">mes</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a&#241;o</span>) {
         <span style="color: #859900;">super</span>(dia, mes, a&#241;o);
     }
@@ -535,20 +534,32 @@ abstracta <i>BaseFecha</i>.
 </div>
 
 <p>
-Archivos que se deben crear y entregar:
+Archivo adicional que se debe crear y entregar:
 </p>
 
 <ul class="org-ul">
 <li><tt>ungs/prog2/tp0/opcional/BaseFecha.java</tt></li>
-<li><tt>ungs/prog2/tp0/opcional/FechaSimple.java</tt></li>
 </ul></li>
 
 <li><p>
 <i>(Opcional)</i> Implementar <i>FechaGregoriana</i> que hereda también de <i>BaseFecha</i>.
 </p>
 
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">package</span> ungs.prog2.tp0.<span style="color: #268bd2; font-weight: bold;">opcional</span>;
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">FechaGregoriana</span> <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">extends BaseFecha</span>
+{
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejercicio OPCIONAL. Cambiar RESUELTO a &#8216;true&#8217; en caso de</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">implementarlo.</span>
+    <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #859900;">final</span> <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">RESUELTO</span> = <span style="color: #268bd2; font-weight: bold;">false</span>;
+}
+</pre>
+</div>
+
 <p>
-Archivo que se debe crear y entregar:
+Archivo adicional que se debe crear y entregar:
 </p>
 
 <ul class="org-ul">
@@ -574,8 +585,8 @@ Archivo que se debe crear y entregar:
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Deque</span>;
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">LinkedList</span>;
 
-<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ColaInt</span> {
-
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ColaInt</span>
+{
     <span style="color: #859900;">private</span> <span style="color: #b58900;">Deque</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
 
     <span style="color: #859900;">public</span> <span style="color: #268bd2;">ColaInt</span>() {
@@ -614,8 +625,8 @@ Archivo que se debe crear y entregar:
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Deque</span>;
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">LinkedList</span>;
 
-<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">PilaInt</span> {
-
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">PilaInt</span>
+{
     <span style="color: #859900;">private</span> <span style="color: #b58900;">Deque</span>&lt;<span style="color: #b58900;">Integer</span>&gt; <span style="color: #268bd2;">elems</span>;
 
     <span style="color: #859900;">public</span> <span style="color: #268bd2;">PilaInt</span>() {
@@ -655,8 +666,8 @@ Archivo que se debe crear y entregar:
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">Set</span>;
 <span style="color: #859900;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #b58900;">TreeSet</span>;
 
-<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #859900;">implements</span> <span style="color: #b58900;">Iterable</span>&lt;<span style="color: #b58900;">Integer</span>&gt; {
-
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">ConjuntoInt</span> <span style="color: #859900;">implements</span> <span style="color: #b58900;">Iterable</span>&lt;<span style="color: #b58900;">Integer</span>&gt;
+{
     <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">NOTA: la clase Conjunto es iterable, por lo que se puede escribir:</span>
     <span style="color: #586e75; font-style: italic;">//</span>
     <span style="color: #586e75; font-style: italic;">//    </span><span style="color: #586e75;">for (int x : conj) { ... }</span>

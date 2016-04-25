@@ -3,8 +3,8 @@ package ungs.prog2.tda;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class PilaInt {
-
+public class PilaInt
+{
     private Deque<Integer> elems;
 
     public PilaInt() {

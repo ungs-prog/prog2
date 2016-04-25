@@ -1,7 +1,7 @@
 package ungs.prog2.tp0;
 
-public class FechaSimple {
-
+public class FechaSimple
+{
     private int dia;
     private int mes;
     private int año;

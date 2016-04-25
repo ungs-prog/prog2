@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class ConjuntoInt implements Iterable<Integer> {
-
+public class ConjuntoInt implements Iterable<Integer>
+{
     // NOTA: la clase Conjunto es iterable, por lo que se puede escribir:
     //
     //    for (int x : conj) { ... }

@@ -3,8 +3,8 @@ package ungs.prog2.tda;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class ColaInt {
-
+public class ColaInt
+{
     private Deque<Integer> elems;
 
     public ColaInt() {
