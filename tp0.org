@@ -11,6 +11,7 @@
 
 ** Pilas y colas
 :PROPERTIES:
+:CUSTOM_ID: p0e1
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio1 :noweb-sep "\n\n"
 :END:
@@ -48,8 +49,8 @@ c. Implementar una variante de ~invertirPila()~ que devuelva la pila invertida e
    }
    #+END_SRC
 
-d. Implementar una función que reciba dos colas ordenadas y devuelva una
-   tercera cola que sea la unión de las dos, y siga ordenada.
+d. Implementar una función que reciba dos colas de enteros ordenadas y devuelva
+   una tercera cola que sea la unión de las dos, y siga ordenada.
    # (1 pt.)
 
    Las colas originales deben quedar vacías, y no se permite el uso de
@@ -75,6 +76,7 @@ d. Implementar una función que reciba dos colas ordenadas y devuelva una
 
 ** Recursión
 :PROPERTIES:
+:CUSTOM_ID: p0e2
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio2 :noweb-sep "\n\n"
 :END:
@@ -109,8 +111,8 @@ b. Implementar una versión recursiva de ~invertirCola()~ que no use estructuras
    }
    #+END_SRC
 
-c. Implementar una función recursiva que reciba dos pilas y devuelva una
-   tercera pila resultado de mezclar, alternando, las dos pilas.
+c. Implementar una función recursiva que reciba dos pilas de enteros y devuelva
+   una tercera pila resultado de mezclar, alternando, las dos pilas.
    # (1 pt.)
 
    No se permite usar estructuras ni funciones auxiliares. Las pilas originales
@@ -153,6 +155,7 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
 
 ** Conjuntos
 :PROPERTIES:
+:CUSTOM_ID: p0e3
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio3 :noweb-sep "\n\n"
 :END:
@@ -197,6 +200,7 @@ c. Implementar una las dos funciones anteriores como una extensión de
 
 ** Clases y objetos
 :PROPERTIES:
+:CUSTOM_ID: p0e4
 :HTML_CONTAINER_CLASS: ejercicios
 :END:
 
