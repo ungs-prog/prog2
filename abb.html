@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>Práctica 4: Árboles binarios de búsqueda</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Dato Simó">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/org.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Práctica 4: Árboles binarios de búsqueda</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#ListaInt">1. Lista recursiva</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2 ejercicios">
+<h2 id="ListaInt"><a id="orgheadline1"></a><span class="section-number-2">1</span> Lista recursiva</h2>
+<div class="outline-text-2" id="text-ListaInt">
+<p>
+Una lista enlazada es una estructura recursiva porque su <i>Nodo</i> se apunta a sí
+mismo:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">class</span> <span style="color: #b58900;">Nodo</span>
+{
+    <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">valor</span>;
+    <span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">siguiente</span>;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Recursi&#243;n en la estructura.</span>
+}
+</pre>
+</div>
+
+<p>
+En general, las primitivas de la lista enlazada se implementan de manera
+iterativa; pero también se pueden escribir de manera recursiva.
+</p>
+
+<p>
+La implementación iterativa a continuación emplea funciones auxiliares para
+facilitar luego la conversión a recursiva.
+</p>
+
+<ol class="org-ol">
+<li><p>
+La clase <i>ListaInt</i> implementa las primitivas <code>agregar()</code>, <code>largo()</code> y
+<code>quitarUltimo()</code> mediante funciones auxiliares a las que pasa el primer
+elemento:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">private</span> <span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">primero</span>;
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve el largo de la lista.</span>
+<span style="color: #859900;">public</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">largo</span>() {
+    <span style="color: #859900;">return</span> largoAux(primero);
+}
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Inserta un elemento al final de la lista.</span>
+<span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">agregar</span>(<span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">x</span>) {
+    <span style="color: #859900;">if</span> (primero == <span style="color: #268bd2; font-weight: bold;">null</span>)
+        primero = <span style="color: #859900;">new</span> <span style="color: #b58900;">Nodo</span>(x, <span style="color: #268bd2; font-weight: bold;">null</span>);
+    <span style="color: #859900;">else</span>
+        agregarAux(primero, x);
+}
+
+<span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Elimina el &#250;ltimo elemento de la lista, y lo devuelve.</span>
+<span style="color: #859900;">public</span> <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">eliminarUltimo</span>() {
+    <span style="color: #859900;">if</span> (primero == <span style="color: #268bd2; font-weight: bold;">null</span>) {
+        <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+    }
+    <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> (primero.siguiente == <span style="color: #268bd2; font-weight: bold;">null</span>) {
+        &lt;&lt;&#193;rbol con un solo nodo&gt;&gt;
+    }
+    <span style="color: #859900;">return</span> eliminarUltimoAux(primero, primero.siguiente);
+}
+</pre>
+</div>
+
+<p>
+<b>Archivo</b>: <a href="abb/ListaInt.java">ListaInt.java</a>.
+</p>
+
+<p>
+Se pide implementar, de manera iterativa, las funciones auxiliares de estas
+primitivas:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Funciones auxiliares, implementadas iterativamente.</span>
+
+<span style="color: #859900;">protected</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">largoAux</span>(<span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">nodo</span>) {
+    <span style="color: #859900;">return</span> -1;
+}
+
+<span style="color: #859900;">protected</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">agregarAux</span>(<span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">nodo</span>, <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">x</span>) {
+}
+
+<span style="color: #859900;">protected</span> <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">eliminarUltimoAux</span>(<span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">anterior</span>, <span style="color: #b58900;">Nodo</span> <span style="color: #268bd2;">actual</span>) {
+    <span style="color: #859900;">return</span> <span style="color: #268bd2; font-weight: bold;">null</span>;
+}
+</pre>
+</div></li>
+
+<li><p>
+Implementar las mismas funciones auxiliares de manera recursiva en una clase
+<i>ListaIntRec</i>.
+</p>
+
+<p>
+<b>Archivo</b>: <a href="abb/ListaIntRec.java">ListaIntRec.java</a>.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+</body>
+</html>
