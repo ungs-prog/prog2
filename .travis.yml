@@ -1,2 +1,6 @@
 script: true
 install: true
+branches:
+  only:
+    - master
+    - test_travis
