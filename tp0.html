@@ -263,12 +263,12 @@ ordenado de enteros.
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Devuelve la posici&#243;n del entero buscado, o -1 si no se encontr&#243;.</span>
-<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElemento</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>) {
-    <span style="color: #859900;">return</span> indiceElementoRec(arr, elemento, 0, arr.length - 1);
+<span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">buscarElemento</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[]) {
+    <span style="color: #859900;">return</span> buscarRec(elemento, arr, 0, arr.length - 1);
 }
 
 <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Funci&#243;n recursiva auxiliar.</span>
-<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">indiceElementoRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx0</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx1</span>) {
+<span style="color: #859900;">private</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">buscarRec</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">elemento</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">arr</span>[], <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx0</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">idx1</span>) {
     <span style="color: #859900;">return</span> -1;
 }
 </pre>
