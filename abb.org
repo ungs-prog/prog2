@@ -1,0 +1,149 @@
+#+TITLE: Práctica 4: Árboles binarios de búsqueda
+#+SETUPFILE: .level.org
+#+OPTIONS: num:1
+
+#+TOC: headlines 1
+
+* Lista recursiva
+:PROPERTIES:
+:CUSTOM_ID: ListaInt
+:HTML_CONTAINER_CLASS: ejercicios
+:header-args: :noweb-sep "\n\n"
+:END:
+
+Una lista enlazada es una estructura recursiva porque su /Nodo/ se apunta a sí
+mismo:
+
+#+BEGIN_SRC java
+class Nodo
+{
+    Integer valor;
+    Nodo siguiente;  // Recursión en la estructura.
+}
+#+END_SRC
+
+En general, las primitivas de la lista enlazada se implementan de manera
+iterativa; pero también se pueden escribir de manera recursiva.
+
+La implementación iterativa a continuación emplea funciones auxiliares para
+facilitar luego la conversión a recursiva.
+
+a. La clase /ListaInt/ implementa las primitivas ~agregar()~, ~largo()~ y
+   ~quitarUltimo()~ mediante funciones auxiliares a las que pasa el primer
+   elemento:
+
+   #+BEGIN_SRC java :noweb-ref ListaMain
+   private Nodo primero;
+
+   // Devuelve el largo de la lista.
+   public int largo() {
+       return largoAux(primero);
+   }
+
+   // Inserta un elemento al final de la lista.
+   public void agregar(Integer x) {
+       if (primero == null)
+           primero = new Nodo(x, null);
+       else
+           agregarAux(primero, x);
+   }
+
+   // Elimina el último elemento de la lista, y lo devuelve.
+   public Integer eliminarUltimo() {
+       if (primero == null) {
+           return null;
+       }
+       else if (primero.siguiente == null) {
+           <<Árbol con un solo nodo>>
+       }
+       return eliminarUltimoAux(primero, primero.siguiente);
+   }
+   #+END_SRC
+
+   *Archivo*: [[file:abb/ListaInt.java][ListaInt.java]].
+
+   Se pide implementar, de manera iterativa, las funciones auxiliares de estas
+   primitivas:
+
+   #+BEGIN_SRC java :noweb-ref ListaAux
+   // Funciones auxiliares, implementadas iterativamente.
+
+   protected int largoAux(Nodo nodo) {
+       return -1;
+   }
+
+   protected void agregarAux(Nodo nodo, Integer x) {
+   }
+
+   protected Integer eliminarUltimoAux(Nodo anterior, Nodo actual) {
+       return null;
+   }
+   #+END_SRC
+
+b. Implementar las mismas funciones auxiliares de manera recursiva en una clase
+   /ListaIntRec/.
+
+   *Archivo*: [[file:abb/ListaIntRec.java][ListaIntRec.java]].
+
+
+
+
+
+* Tangle                                                           :noexport:
+#+BEGIN_SRC java :noweb-ref package
+package ungs.prog2.abb;
+#+END_SRC
+
+#+BEGIN_SRC java :noweb-ref "Árbol con un solo nodo"
+Integer x = primero.valor;
+primero = null;
+return x;
+#+END_SRC
+
+#+BEGIN_SRC java :tangle prog2/abb/ListaInt.java :noweb yes
+<<package>>
+
+public class ListaInt
+{
+    class Nodo
+    {
+        Integer valor;
+        Nodo siguiente;
+
+        Nodo(Integer x, Nodo sig) {
+            valor = x;
+            siguiente = sig;
+        }
+    }
+
+    <<ListaMain>>
+
+    // Devuelve true si la lista está vacía.
+    public boolean vacia() {
+        return (primero == null);
+    }
+
+    <<ListaAux>>
+}
+#+END_SRC
+
+#+BEGIN_SRC java :tangle prog2/abb/ListaIntRec.java :noweb yes
+<<package>>
+
+public class ListaIntRec extends ListaInt
+{
+    @Override
+    protected int largoAux(Nodo nodo) {
+        return -1;
+    }
+
+    @Override
+    protected void agregarAux(Nodo nodo, Integer x) {
+    }
+
+    @Override
+    protected Integer eliminarUltimoAux(Nodo anterior, Nodo actual) {
+        return null;
+    }
+}
+#+END_SRC
