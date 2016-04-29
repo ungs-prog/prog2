@@ -1,5 +1,9 @@
-script: true
+language: java
+
 install: true
+
+script: true
+
 branches:
   only:
     - master
