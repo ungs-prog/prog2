@@ -130,12 +130,12 @@ a. Implementar una función recursiva de búsqueda binaria sobre un arreglo
 
    #+BEGIN_SRC java
    // Devuelve la posición del entero buscado, o -1 si no se encontró.
-   public static int indiceElemento(int arr[], int elemento) {
-       return indiceElementoRec(arr, elemento, 0, arr.length - 1);
+   public static int buscarElemento(int elemento, int arr[]) {
+       return buscarRec(elemento, arr, 0, arr.length - 1);
    }
 
    // Función recursiva auxiliar.
-   private static int indiceElementoRec(int arr[], int elemento, int idx0, int idx1) {
+   private static int buscarRec(int elemento, int arr[], int idx0, int idx1) {
        return -1;
    }
    #+END_SRC
