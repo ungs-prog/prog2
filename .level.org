@@ -3,4 +3,5 @@
 #+OPTIONS: html-postamble:nil
 #+OPTIONS: ^:nil toc:nil H:3 num:0 timestamp:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/org.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/org-solarized.css">
 #+HTML_MATHJAX: path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"

@@ -1,0 +1,52 @@
+pre.src .org-c-annotation,
+code.src .org-c-annotation {
+  color: #268bd2;
+  font-weight: bold;
+}
+
+pre.src .org-comment,
+code.src .org-comment {
+  color: #586e75;
+}
+
+pre.src .org-comment-delimiter,
+code.src .org-comment-delimiter {
+  color: #586e75;
+}
+
+pre.src .org-constant,
+code.src .org-constant {
+  color: #268bd2;
+  font-weight: bold;
+}
+
+pre.src .org-doc,
+code.src .org-doc {
+  color: #2aa198;
+}
+
+pre.src .org-function-name,
+code.src .org-function-name {
+  color: #268bd2;
+}
+
+pre.src .org-keyword,
+code.src .org-keyword {
+  color: #859900;
+}
+
+pre.src .org-string,
+code.src .org-string {
+  color: #2aa198;
+}
+
+pre.src .org-type,
+code.src .org-type {
+  color: #b58900;
+}
+
+pre.src .org-variable-name,
+code.src .org-variable-name {
+  color: #268bd2;
+}
+
