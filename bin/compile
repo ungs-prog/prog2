@@ -14,7 +14,7 @@ ln -s "$REPO_DIR/$BRANCH_DIR" .publish
 emacs --batch -l bin/compile.el
 
 MSG=$(git show --date="format:%d/%m/%y" -s \
-               --pretty="Update from $TRAVIS_REPO_SLUG.%n%n%aN%n    (%cd) %s")
+               --pretty="Update $TRAVIS_BRANCH from $TRAVIS_REPO_SLUG.%n%n%aN%n    (%cd) %s")
 
 git -C "$REPO_DIR" add -A "$BRANCH_DIR"
 git -C "$REPO_DIR" commit --allow-empty -m "$MSG"
