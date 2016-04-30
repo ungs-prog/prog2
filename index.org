@@ -2,4 +2,4 @@
 #+SETUPFILE: .level.org
 
 - Recursividad
-  - [[file:rec.org][Práctica 1]]
+  - [[file:rec1.org][Práctica 1]]
