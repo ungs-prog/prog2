@@ -13,6 +13,7 @@ env:
 
 branches:
   only:
+    - next
     - master
     - test_travis
 
@@ -34,7 +35,7 @@ deploy:
     script: bin/publish
     on:
       branch:
-        - master
+        - next
 
 notifications:
   email:
