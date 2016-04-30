@@ -1,6 +1,7 @@
 #+TITLE: Práctica 0
 #+SETUPFILE: .level.org
 #+OPTIONS: num:1
+#+PROPERTY: header-args :mkdirp yes
 
 #+TOC: headlines 1
 
@@ -12,7 +13,7 @@
 :header-args: :noweb-ref Ejercicio1 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:tp0/Ejercicio1.java][Ejercicio1.java]].
+*Archivo:* [[file:src/ungs/prog2/tp0/Ejercicio1.java][Ejercicio1.java]].
 
 a. Implementar una función que reciba una [[#ColaInt][cola de enteros]] e invierta el orden
    de sus elementos.
@@ -72,9 +73,9 @@ d. Implementar una función que reciba dos colas de enteros ordenadas y devuelva
 e. /(Opcional)/ Implementar una versión de /PilaInt/ sobre un arreglo de enteros
    con redimensionamiento dinámico.
 
-   Archivo adicional que se debe entregar: [[file:tp0/opcional/PilaArr.java][PilaArr.java]].
+   Archivo adicional que se debe entregar: [[file:src/ungs/prog2/tp0/opcional/PilaArr.java][PilaArr.java]].
 
-   #+BEGIN_SRC java :tangle prog2/tp0/opcional/PilaArr.java :exports none :noweb-ref none
+   #+BEGIN_SRC java :tangle prog2/tp0/opcional/PilaArr.java :exports none :noweb-ref none :mkdirp yes
    package ungs.prog2.tp0.opcional;
 
    public class PilaArr
@@ -122,7 +123,7 @@ e. /(Opcional)/ Implementar una versión de /PilaInt/ sobre un arreglo de entero
 :header-args: :noweb-ref Ejercicio2 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:tp0/Ejercicio2.java][Ejercicio2.java]].
+*Archivo:* [[file:src/ungs/prog2/tp0/Ejercicio2.java][Ejercicio2.java]].
 
 a. Implementar una función recursiva de búsqueda binaria sobre un arreglo
    ordenado de enteros.
@@ -190,7 +191,7 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
    }
    #+END_SRC
 
-   Archivo adicional que se debe entregar: [[file:tp0/opcional/Ordenamientos.java][Ordenamientos.java]].
+   Archivo adicional que se debe entregar: [[file:src/ungs/prog2/tp0/opcional/Ordenamientos.java][Ordenamientos.java]].
 
 
 * Conjuntos
@@ -200,7 +201,7 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
 :header-args: :noweb-ref Ejercicio3 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:tp0/Ejercicio3.java][Ejercicio3.java]].
+*Archivo:* [[file:src/ungs/prog2/tp0/Ejercicio3.java][Ejercicio3.java]].
 
 a. Implementar una función que, dados dos [[#ConjuntoInt][conjuntos de enteros]], devuelva la
    unión de ambos.
@@ -248,7 +249,7 @@ c. Implementar una las dos funciones anteriores como una extensión de
 :HTML_CONTAINER_CLASS: ejercicios
 :END:
 
-*Archivo:* [[file:tp0/FechaSimple.java][FechaSimple.java]].
+*Archivo:* [[file:src/ungs/prog2/tp0/FechaSimple.java][FechaSimple.java]].
 
 a. Completar la clase /FechaSimple/ que se documenta a continuación:
 
