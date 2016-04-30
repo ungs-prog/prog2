@@ -8,3 +8,10 @@ branches:
   only:
     - master
     - test_travis
+
+deploy:
+  - provider: script
+    script: bin/publish
+    on:
+      branch:
+        - master
