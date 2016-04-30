@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+umask 0077
+openssl aes-256-cbc -d               \
+    -K "$encrypted_9e662f99a188_key" \
+    -iv "$encrypted_9e662f99a188_iv" \
+    -in .travis_rsa.enc -out .travis_rsa
+
+eval $(ssh-agent)
+ssh-add .travis_rsa
+
+git -C "$REPO_DIR" push --force-with-lease="origin/$TARGET_BRANCH" \
+                        git@github.com:"$TARGET_REPO" HEAD:"$TARGET_BRANCH"

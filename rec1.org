@@ -1,11 +1,12 @@
 #+TITLE: Recursividad: práctica 1
 #+SETUPFILE: .level.org
 #+OPTIONS: toc:3
+#+PROPERTY: header-args :mkdirp yes
 #+BIND: org-src-preserve-indentation:t
 
 * Función /sumar/ recursiva
 
-*Archivo de código:* [[file:rec1/SumarRec.java][SumarRec.java]].
+*Archivo de código:* [[file:src/ungs/prog2/rec1/SumarRec.java][SumarRec.java]].
 
 Se desea implementar una función recursiva que sume todos los elementos de un
 arreglo de enteros:
@@ -308,7 +309,7 @@ class SumarRec {
 
 * Función /mínimo/ recursiva
 
-*Archivo de código:* [[file:rec1/MinimoRec.java][MinimoRec.java]].
+*Archivo de código:* [[file:src/ungs/prog2/rec1/MinimoRec.java][MinimoRec.java]].
 
 Se desea implementar una función recursiva que encuentre el mínimo de un
 arreglo. Si el arreglo está vacío, debe devolver -1.
