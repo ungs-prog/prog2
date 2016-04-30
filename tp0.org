@@ -1,25 +1,21 @@
-#+SETUPFILE: index.org
+#+TITLE: Práctica 0
+#+SETUPFILE: .level.org
 #+OPTIONS: num:1
-
-* Práctica 0
-:PROPERTIES:
-:EXPORT_FILE_NAME: prog2/tp0/index.html
-:END:
 
 #+TOC: headlines 1
 
 
-** Pilas y colas
+* Pilas y colas
 :PROPERTIES:
-:CUSTOM_ID: p0e1
+:CUSTOM_ID: ej1
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio1 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:Ejercicio1.java][Ejercicio1.java]].
+*Archivo:* [[file:tp0/Ejercicio1.java][Ejercicio1.java]].
 
-a. Implementar una función que reciba una [[ColaInt][cola]] e invierta el orden de sus
-   elementos.
+a. Implementar una función que reciba una [[#ColaInt][cola de enteros]] e invierta el orden
+   de sus elementos.
    # (0.5 pts.)
 
    #+BEGIN_SRC java
@@ -28,8 +24,8 @@ a. Implementar una función que reciba una [[ColaInt][cola]] e invierta el orden
    }
    #+END_SRC
 
-b. Implementar una función que reciba una [[PilaInt][pila]] e invierta el orden de sus
-   elementos.
+b. Implementar una función que reciba una [[#PilaInt][pila de enteros]] e invierta el orden
+   de sus elementos.
    # (0.5 pts.)
 
    #+BEGIN_SRC java
@@ -74,14 +70,14 @@ d. Implementar una función que reciba dos colas de enteros ordenadas y devuelva
    #+END_EXAMPLE
 
 
-** Recursión
+* Recursión
 :PROPERTIES:
-:CUSTOM_ID: p0e2
+:CUSTOM_ID: ej2
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio2 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:Ejercicio2.java][Ejercicio2.java]].
+*Archivo:* [[file:tp0/Ejercicio2.java][Ejercicio2.java]].
 
 a. Implementar una función recursiva de búsqueda binaria sobre un arreglo
    ordenado de enteros.
@@ -150,20 +146,20 @@ d. /(Opcional)/ Implementar una versión recursiva de QuickSort:
    }
    #+END_SRC
 
-   Archivo adicional que se debe entregar: [[file:opcional/Ordenamientos.java][Ordenamientos.java]].
+   Archivo adicional que se debe entregar: [[file:tp0/opcional/Ordenamientos.java][Ordenamientos.java]].
 
 
-** Conjuntos
+* Conjuntos
 :PROPERTIES:
-:CUSTOM_ID: p0e3
+:CUSTOM_ID: ej3
 :HTML_CONTAINER_CLASS: ejercicios
 :header-args: :noweb-ref Ejercicio3 :noweb-sep "\n\n"
 :END:
 
-*Archivo:* [[file:Ejercicio3.java][Ejercicio3.java]].
+*Archivo:* [[file:tp0/Ejercicio3.java][Ejercicio3.java]].
 
-a. Implementar una función que, dados dos [[ConjuntoInt][conjuntos]], devuelva la unión de
-   ambos.
+a. Implementar una función que, dados dos [[#ConjuntoInt][conjuntos de enteros]], devuelva la
+   unión de ambos.
    # (0.5 pts.)
 
    #+BEGIN_SRC java
@@ -198,17 +194,17 @@ c. Implementar una las dos funciones anteriores como una extensión de
    #+END_SRC
 
 
-** Clases y objetos
+* Clases y objetos
 :PROPERTIES:
-:CUSTOM_ID: p0e4
+:CUSTOM_ID: ej4
 :HTML_CONTAINER_CLASS: ejercicios
 :END:
 
-*Archivo:* [[file:FechaSimple.java][FechaSimple.java]].
+*Archivo:* [[file:tp0/FechaSimple.java][FechaSimple.java]].
 
 a. Completar la clase /FechaSimple/ que se documenta a continuación:
 
-   #+BEGIN_SRC java :tangle prog2/tp0/FechaSimple.java
+   #+BEGIN_SRC java
    package ungs.prog2.tp0;
 
    // TODO: write docs.
@@ -288,13 +284,15 @@ c. /(Opcional)/ Implementar /FechaGregoriana/ que hereda también de /BaseFecha/
      - =ungs/prog2/tp0/opcional/FechaGregoriana.java=
 
 
-** Estructuras de datos
+* Estructuras de datos
 :PROPERTIES:
 :UNNUMBERED: t
 :END:
 
-*** La clase /ColaInt/
-<<ColaInt>>
+** La clase /ColaInt/
+:PROPERTIES:
+:CUSTOM_ID: ColaInt
+:END:
 #+BEGIN_SRC java :tangle prog2/tda/ColaInt.java :noweb yes
 package ungs.prog2.tda;
 
@@ -328,8 +326,10 @@ public class ColaInt {
 #+END_SRC
 
 
-*** La clase /PilaInt/
-<<PilaInt>>
+** La clase /PilaInt/
+:PROPERTIES:
+:CUSTOM_ID: PilaInt
+:END:
 #+BEGIN_SRC java :tangle prog2/tda/PilaInt.java :noweb yes
 package ungs.prog2.tda;
 
@@ -363,8 +363,10 @@ public class PilaInt {
 #+END_SRC
 
 
-*** La clase /ConjuntoInt/
-<<ConjuntoInt>>
+** La clase /ConjuntoInt/
+:PROPERTIES:
+:CUSTOM_ID: ConjuntoInt
+:END:
 #+BEGIN_SRC java :tangle prog2/tda/ConjuntoInt.java :noweb yes
 package ungs.prog2.tda;
 
@@ -407,7 +409,7 @@ public class ConjuntoInt implements Iterable<Integer> {
 #+END_SRC
 
 
-** Tangle                                                          :noexport:
+* Tangle                                                           :noexport:
 #+BEGIN_SRC java :noweb-ref package
 package ungs.prog2.tp0;
 #+END_SRC
