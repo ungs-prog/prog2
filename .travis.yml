@@ -1,13 +1,33 @@
 language: java
 
 install: true
+before_install:
+  - emacs24 --batch -l bin/install-org.el
 
-script: true
+script: bin/compile
+env:
+  global:
+    - REPO_DIR=".repo"
+    - TARGET_REPO="ungs-prog2/_"
+    - TARGET_BRANCH="gh-pages"
 
 branches:
   only:
     - master
     - test_travis
+
+addons:
+  apt:
+    packages:
+      - git  # For --date=format:
+      - emacs24
+    sources:
+      - git-core
+      - cassou-emacs
+
+cache:
+  directories:
+    - $HOME/.emacs.d
 
 deploy:
   - provider: script
@@ -15,3 +35,7 @@ deploy:
     on:
       branch:
         - master
+
+notifications:
+  email:
+    on_success: never
