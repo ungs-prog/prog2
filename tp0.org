@@ -2,6 +2,7 @@
 #+SETUPFILE: .level.org
 #+OPTIONS: num:1
 #+PROPERTY: header-args :mkdirp yes
+#+BIND: org-list-allow-alphabetical t
 
 #+TOC: headlines 1
 
