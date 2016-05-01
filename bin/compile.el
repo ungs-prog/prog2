@@ -1,3 +1,4 @@
+(setq org-export-allow-bind-keywords t)
 (setq org-publish-project-alist
      '(("prog2-html"
         :base-directory "."
@@ -31,6 +32,11 @@
                    (rename-file f (concat (file-name-as-directory dst)
                                           (file-name-nondirectory rel)) t)))))
     (mapc move (org-babel-tangle-file filename))))
+
+;; Needed for Emacs 24.3.
+;; https://lists.gnu.org/archive/html/emacs-orgmode/2013-09/msg01250.html
+(setq c-standard-font-lock-fontify-region-function
+      'font-lock-default-fontify-region)
 
 (require 'package)
 (package-initialize)
