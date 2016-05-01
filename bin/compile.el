@@ -1,3 +1,4 @@
+(setq org-export-allow-bind-keywords t)
 (setq org-publish-project-alist
      '(("prog2-html"
         :base-directory "."
