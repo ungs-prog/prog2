@@ -1,6 +1,7 @@
 #+TITLE: Práctica 4: Árboles binarios de búsqueda
 #+SETUPFILE: .level.org
 #+OPTIONS: num:1
+#+PROPERTY: header-args :mkdirp yes
 
 #+TOC: headlines 1
 
