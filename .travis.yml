@@ -25,10 +25,6 @@ addons:
       - git-core
       - cassou-emacs
 
-cache:
-  directories:
-    - $HOME/.emacs.d
-
 deploy:
   - provider: script
     script: bin/publish
