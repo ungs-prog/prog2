@@ -2,7 +2,7 @@ language: java
 
 install: true
 before_install:
-  - emacs24 --batch -l bin/install-org.el
+  - emacs -Q --batch -l bin/install-org.el
 
 script: bin/compile
 env:

@@ -11,7 +11,7 @@ BRANCH_DIR="${TRAVIS_BRANCH//\//_}"
 
 rm -rf "$REPO_DIR/$BRANCH_DIR"
 ln -s "$REPO_DIR/$BRANCH_DIR" .publish
-emacs --batch -l bin/compile.el
+emacs --batch -Q -l bin/compile.el
 
 MSG=$(git show --date="format:%d/%m/%y" -s \
                --pretty="Update $TRAVIS_BRANCH from $TRAVIS_REPO_SLUG.%n%n%aN%n    (%cd) %s")
