@@ -22,16 +22,18 @@
        ("prog2"
         :components ("prog2-html" "prog2-static" "prog2-src"))))
 
+(defun move-with-subpath (destdir fname)
+  (let* ((rel (file-relative-name fname default-directory))
+         (dst (concat (file-name-as-directory destdir)
+                      (file-name-directory rel))))
+    (unless (file-exists-p dst)
+      (make-directory dst t))
+    (rename-file fname (concat (file-name-as-directory dst)
+                               (file-name-nondirectory rel)) t)))
+
 (defun ungs/org-babel-tangle-publish (_ filename pub-dir)
-  (let ((move '(lambda (f)
-                 (let* ((rel (file-relative-name f default-directory))
-                        (dst (concat (file-name-as-directory pub-dir)
-                                     (file-name-directory rel))))
-                   (unless (file-exists-p dst)
-                     (make-directory dst t))
-                   (rename-file f (concat (file-name-as-directory dst)
-                                          (file-name-nondirectory rel)) t)))))
-    (mapc move (org-babel-tangle-file filename))))
+  (mapc (apply-partially 'move-with-subpath pub-dir)
+        (org-babel-tangle-file filename)))
 
 (require 'package)
 (package-initialize)
