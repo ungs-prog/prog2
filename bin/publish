@@ -13,3 +13,5 @@ ssh-add .travis_rsa
 
 git -C "$REPO_DIR" push --force-with-lease=origin/gh-pages \
                         git@github.com:"$PREVIEW_REPO" HEAD:gh-pages
+
+git push origin "$ARCHIVE_BRANCH"

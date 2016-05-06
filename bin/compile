@@ -19,8 +19,9 @@ MSG=$(git show --date="format:%d/%m/%y" -s \
 git -C "$REPO_DIR" add -A "$BRANCH_DIR"
 git -C "$REPO_DIR" commit --allow-empty -m "$MSG"
 
-git checkout "$ARCHIVE_BRANCH"
+git fetch origin "$ARCHIVE_BRANCH"
+git checkout -b "$ARCHIVE_BRANCH" FETCH_HEAD
 git rm -r .
-rsync -a "$REPO_DIR/${BRANCH_DIR%/}/" .
+tar -cC "$REPO_DIR/$BRANCH_DIR" . | tar -xv
 git add -A .
 git commit --allow-empty -m "$MSG"
