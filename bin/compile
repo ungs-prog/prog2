@@ -2,7 +2,7 @@
 
 set -eu
 
-git clone -b "$TARGET_BRANCH" "https://github.com/$TARGET_REPO" "$REPO_DIR"
+git clone -b gh-pages "https://github.com/$PREVIEW_REPO" "$REPO_DIR"
 
 git config --global user.name "Travis CI"
 git config --global user.email "nobody@nobody.org"
@@ -18,3 +18,9 @@ MSG=$(git show --date="format:%d/%m/%y" -s \
 
 git -C "$REPO_DIR" add -A "$BRANCH_DIR"
 git -C "$REPO_DIR" commit --allow-empty -m "$MSG"
+
+git checkout "$ARCHIVE_BRANCH"
+git rm -r .
+rsync -a "$REPO_DIR/${BRANCH_DIR%/}/" .
+git add -A .
+git commit --allow-empty -m "$MSG"

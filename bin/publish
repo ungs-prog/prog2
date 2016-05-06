@@ -11,5 +11,5 @@ openssl aes-256-cbc -d               \
 eval $(ssh-agent)
 ssh-add .travis_rsa
 
-git -C "$REPO_DIR" push --force-with-lease="origin/$TARGET_BRANCH" \
-                        git@github.com:"$TARGET_REPO" HEAD:"$TARGET_BRANCH"
+git -C "$REPO_DIR" push --force-with-lease=origin/gh-pages \
+                        git@github.com:"$PREVIEW_REPO" HEAD:gh-pages

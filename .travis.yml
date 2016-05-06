@@ -8,8 +8,8 @@ script: bin/compile
 env:
   global:
     - REPO_DIR=".repo"
-    - TARGET_REPO="ungs-prog2/_"
-    - TARGET_BRANCH="gh-pages"
+    - PREVIEW_REPO="ungs-prog2/_"
+    - ARCHIVE_BRANCH="2016c1"
 
 branches:
   only:
