@@ -25,3 +25,6 @@ git rm -r .
 tar -cC "$REPO_DIR/$BRANCH_DIR" . | tar -xv
 git add -A .
 git commit --allow-empty -m "$MSG"
+
+git checkout -
+ls
